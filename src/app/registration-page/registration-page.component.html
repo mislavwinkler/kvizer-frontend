@@ -1,0 +1,49 @@
+<div class="registration-page-container">
+    <h1 class="registration-page-logo">Kvizer</h1>
+    <form class="registration-page-form">
+      <h2 class="registration-page-text">Registration</h2>
+      <label>Email:</label>
+      <input
+        type="email"
+        id="username"
+        placeholder="email"
+        class="registration-page-textinput input"
+      />
+      <label>Username:</label>
+      <input
+        type="text"
+        id="username"
+        placeholder="username"
+        class="registration-page-textinput1 input"
+      />
+      <label>Password:</label>
+      <input
+        type="password"
+        id="password"
+        placeholder="password"
+        class="registration-page-textinput2 input"
+      />
+      <label>Confirm password:</label>
+      <input
+        type="password"
+        id="password"
+        placeholder="password"
+        class="registration-page-textinput3 input"
+      />
+      <div class="registration-page-container1">
+        <button (click)="buttonRegisterClick()" [disabled]="registering"
+                        class="login-button-button" type="submit">Register<span
+                  class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
+                  *ngIf="registering"></span>
+                </button>
+        <a
+          href=""
+          class="registration-page-link"
+        >
+          Already have an acount ?
+        </a>
+      </div>
+    <div class="text-danger mt-2" *ngIf="registrationError">There was an error while registering, please try again.</div>
+    </form>
+  </div>
+  
