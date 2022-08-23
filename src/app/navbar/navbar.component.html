@@ -1,0 +1,19 @@
+<header class="navbar"  [ngClass]="{'navbar-fixed': isFixedNavbar}">
+    <div class="container" fxLayout="row wrap" fxLayoutAlign="start center">
+       <div class="navbar-mobile-top" fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="start center">
+          <div class="navbar-logo">
+             <a routerLink="/">Logo</a>
+          </div>
+          <button mat-icon-button color="accent" class="navbar-toggle" (click)="toggleNavbar()">
+             <mat-icon>{{!navbarOpened ? 'menu': 'close'}}</mat-icon>
+          </button>
+       </div>
+       <div fxFlex class="top-navbar">
+          <span fxFlex></span>
+          <a mat-button  class="navbartop-btn" ><strong>About Us</strong></a>
+          <a mat-button  class="navbartop-btn" ><strong>Services</strong></a>
+          <a mat-button  class="navbartop-btn" ><strong>Testimonials</strong></a>
+          <a mat-button  class="navbartop-btn" ><strong>Contact</strong></a>
+       </div>
+    </div>
+  </header>

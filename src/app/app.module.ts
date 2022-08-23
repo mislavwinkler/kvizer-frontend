@@ -12,6 +12,10 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {LoginPageComponent} from './login-page/login-page.component';
 import {RegistrationPageComponent } from './registration-page/registration-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon'
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -20,13 +24,17 @@ import { HomePageComponent } from './home-page/home-page.component';
     HomePageComponent,
     ForbiddenPageComponent,
     PageNotFoundComponent,
-    RegistrationPageComponent
+    RegistrationPageComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    FlexLayoutModule
   ],
   providers: [
     {
