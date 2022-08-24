@@ -11,7 +11,6 @@ import {Router} from "@angular/router";
 })
 export class NewQuizPageComponent implements OnInit {
 
-  randomstring = require("randomstring");
   procesing = false;
   error = false;
   quiz = new Quiz(this.generateRandomCode(), '', new Date(Date.now()) ,
@@ -26,10 +25,10 @@ export class NewQuizPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  buttonCreateQuizClick() {
+  buttonCreateQuizClick(name: string) {
     this.error = false;
     this.procesing = true;
-    this.quiz.makerName.trim()
+    this.quiz.name = name.trim();
 
     this.quizService.addQuiz(this.quiz)
       .subscribe({
@@ -44,10 +43,11 @@ export class NewQuizPageComponent implements OnInit {
   }
 
   private generateRandomCode(){
-    this.randomstring.generate({
-      length: 6,
-      capitalization: 'uppercase'
-    })
-    return this.randomstring
+    var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      var result = '';
+      for ( var i = 0; i < 6; i++ ) {
+          result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
+      }
+      return result;
   }
 }
