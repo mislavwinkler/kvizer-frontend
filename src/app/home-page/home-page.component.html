@@ -1,18 +1,14 @@
-<a href="" class="home-page-link-top">Home</a>
-<a href="/account" class="home-page-link-top">Account</a>
-<a href="/new" class="solid-button">New Quiz</a>
-
 <div class="home-page-content-container">
-    <h1 class="heading landing-page-text09">Join quiz</h1>
+    <h1 class="heading landing-page-join-text">Join quiz</h1>
     <input
       type="text"
       placeholder="quiz code"
-      class="landing-page-textinput input"
+      class="home-page-textinput input"
     />
     <button
     (click)="buttonJoinClick()"
     [disabled]="joining"
-    class="solid-button">Join<span
+    class="join-button">Join<span
     class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
     *ngIf="joining"></span>
     </button>

@@ -1,6 +1,7 @@
-<app-navbar></app-navbar>
-<div style="padding-top: 70px;">
-  <div class="w-100 text-end" *ngIf="authenticationService.isUserAuthenticated()">Prijavljeni ste kao
+<app-navbar *ngIf="authenticationService.isUserAuthenticated()"></app-navbar>
+
+<div [ngStyle]="{'padding-top':authenticationService.isUserAuthenticated() ? '70px;' : '0px'}">
+  <div style="text-align: end; padding-right: 2rem;" *ngIf="authenticationService.isUserAuthenticated()">Prijavljeni ste kao
     <strong>{{authenticationService.getAuthenticatedUserUsername()}}</strong> | <a href="#" (click)="logout()" class="link-primary">Odjava</a>
   </div>
   <div class="m-5">

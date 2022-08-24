@@ -16,6 +16,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon'
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { QuizPageComponent } from './quiz-page/quiz-page.component';
+import { NewQuizPageComponent } from './new-quiz-page/new-quiz-page.component';
+import { AccountPageComponent } from './account-page/account-page.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ForbiddenPageComponent,
     PageNotFoundComponent,
     RegistrationPageComponent,
-    NavbarComponent
+    NavbarComponent,
+    QuizPageComponent,
+    NewQuizPageComponent,
+    AccountPageComponent
   ],
   imports: [
     BrowserModule,

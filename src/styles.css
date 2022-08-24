@@ -1,4 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
-
+:root {
+    --color-primary: #FFFFFF;
+    --color-accent: #000000;
+    --color-warning: red;
+}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+a:link {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  
+  a:visited {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: var(--color-accent);
+    font-weight: bold;
+  }
+  
+  a:active {
+    color: var(--color-accent);
+    font-weight: bold;
+  }
+
+  .text-error{
+    color: var(--color-warning)
+  }

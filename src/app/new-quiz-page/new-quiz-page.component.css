@@ -1,31 +1,27 @@
-.login-page-container {
+.new-quiz-page-container {
     width: 100%;
     display: flex;
     overflow: auto;
     min-height: 100vh;
     align-items: center;
     flex-direction: column;
-    justify-content: center;
   }
-  .login-page-logo {
-    font-size: 350%;
-  }
-  .login-page-form {
+  .new-quiz-page-form {
     width: 40%;
     height: auto;
     position: relative;
   }
-  .login-page-textinput {
+  .new-quiz-page-textinput {
     width: 100%;
   }
-  .login-page-button-container {
+  .new-quiz-page-button-container {
     width: 100%;
     display: flex;
     padding: 0.5rem;
     align-items: center;
     flex-direction: column;
   }
-  .login-button {
+  .new-quiz-button {
     color: var(--color-accent);
     padding-top: 1rem;
     border-color: var(--color-accent);
@@ -36,18 +32,20 @@
     padding-bottom: 1rem;
     background-color: var(--color-primary);
   }
-  .login-page-link {
-    font-size: 14px;
-    align-self: flex-end;
-    margin-top: 0.5rem;
-  }
+
+
   @media(max-width: 991px) {
-    .login-page-form {
+    .new-quiz-page-form {
       width: 70%;
     }
   }
+  @media(max-width: 767px) {
+    .new-quiz-page-logo {
+      font-size: 250%;
+    }
+  }
   @media(max-width: 479px) {
-    .login-page-form {
+    .new-quiz-page-form {
       width: 90%;
     }
   }

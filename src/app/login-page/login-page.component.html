@@ -8,12 +8,12 @@
       />
       <label>Password:</label>
       <input [(ngModel)]="login.password" [disabled]="authenticating"
-      autocomplete="current-password" class="login-page-textinput1 input" name="password"
+      autocomplete="current-password" class="login-page-textinput input" name="password"
       placeholder="password" required type="password"
       />
-      <div class="login-page-container1">
+      <div class="login-page-button-container">
         <button (click)="buttonLoginClick()" [disabled]="authenticating"
-                        class="login-button-button" type="submit">Login<span
+                        class="login-button" type="submit">Login<span
                   class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
                   *ngIf="authenticating"></span>
                 </button>
@@ -24,6 +24,6 @@
           Do not have an acount ? Register here
         </a>
       </div>
-      <div class="text-danger mt-2" *ngIf="authenticationError">There was an error attempting to log in, please check your username and password and try again.</div>
+      <div class="text-error" *ngIf="authenticationError">There was an error attempting to log in, please check your username and password and try again.</div>
     </form>
   </div>

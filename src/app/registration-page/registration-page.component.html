@@ -14,25 +14,25 @@
         type="text"
         id="username"
         placeholder="username"
-        class="registration-page-textinput1 input"
+        class="registration-page-textinput input"
       />
       <label>Password:</label>
       <input
         type="password"
         id="password"
         placeholder="password"
-        class="registration-page-textinput2 input"
+        class="registration-page-textinput input"
       />
       <label>Confirm password:</label>
       <input
         type="password"
         id="password"
         placeholder="password"
-        class="registration-page-textinput3 input"
+        class="registration-page-textinput input"
       />
-      <div class="registration-page-container1">
+      <div class="registration-page-button-container">
         <button (click)="buttonRegisterClick()" [disabled]="registering"
-                        class="login-button-button" type="submit">Register<span
+                        class="register-button" type="submit">Register<span
                   class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
                   *ngIf="registering"></span>
                 </button>

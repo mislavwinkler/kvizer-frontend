@@ -1,0 +1,19 @@
+<div class="new-quiz-page-container">
+    <form class="new-quiz-page-form">
+      <h2 class="new-quiz-page-text">New quiz</h2>
+      <label>Quiz name:</label>
+      <input [(ngModel)]="quiz.name"
+        type="text"
+        id="name"
+        placeholder="quiz name"
+        class="new-quiz-page-textinput input"
+      />
+      <div class="new-quiz-page-button-container">
+        <button (click)="buttonCreateQuizClick()" [disabled]="procesing"
+                        class="new-quiz-button" type="submit">Make quiz<span
+                  class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
+                  *ngIf="procesing"></span>
+                </button>
+      </div>
+    <div class="text-danger mt-2" *ngIf="error">An error ocured, please try again.</div>
+    </form>
