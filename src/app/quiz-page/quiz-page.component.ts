@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
+import { ActivatedRoute } from '@angular/router';
+import { Question } from '../question';
+import { QuestionService } from '../question.service';
 
 @Component({
   selector: 'app-quiz-page',
@@ -7,9 +11,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuizPageComponent implements OnInit {
 
-  constructor() { }
+  public code : string = ''
+  questions?: Question[];
+
+  constructor(
+    private questionService: QuestionService,
+    private router: Router,
+    private activatedroute : ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+    this.code = this.activatedroute.snapshot.paramMap.get("code")!;
+
+    this.getQuestions();
+  }
+
+  getQuestions() {
+    this.questionService.getQuestionsByQuizCode(this.code)
+      .subscribe(questions => this.questions = questions);
   }
 
 }

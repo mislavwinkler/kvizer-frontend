@@ -31,7 +31,7 @@ const routes: Routes = [
     canActivate: [LoggedInGuard]
   },
   {
-    path: 'quiz',
+    path: 'quiz/:code',
     component: QuizPageComponent,
     canActivate: [LoggedInGuard]
   },

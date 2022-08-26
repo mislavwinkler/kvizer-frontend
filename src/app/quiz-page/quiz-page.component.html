@@ -1,1 +1,12 @@
-<p>quiz-page works!</p>
+<p>quiz with code: {{code}}</p>
+
+<ul class="quizes">
+    <li *ngFor="let question of questions">
+        <a routerLink="/detail/{{question.position}}">
+        {{question.question}} -- {{question.answer}}
+        </a>
+        <!-- <button *ngIf="isUserAdmin" class="delete" title="delete hardware"
+                (click)="delete(hardware)">x
+        </button> -->
+    </li>
+</ul>

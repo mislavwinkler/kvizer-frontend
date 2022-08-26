@@ -27,26 +27,38 @@ export class NewQuizPageComponent implements OnInit {
   }
 
   buttonCreateQuizClick(name: string) {
-    this.error = false;
-    this.procesing = true;
     this.quiz.name = name.trim();
 
-    if (name.length == 0){
+    if (this.quiz.name.length == 0){
       this.inputError = true;
       this.procesing = false;
     }
     else{
+      this.makeNewQuiz()
+    }
+  }
+
+  private makeNewQuiz(){
+    this.error = false;
+    this.procesing = true;
+
     this.quizService.addQuiz(this.quiz)
       .subscribe({
         next: () => {
           this.router.navigate([`quiz/${this.quiz.code}`]).then();
         },
-        error: () => {
+        error: (error) => {
+          if(error.status == 409)
+          {
+            this.quiz.code = this.generateRandomCode()
+            this.makeNewQuiz()
+          }
+          else{
           this.error = true;
           this.procesing = false;
+          }
         }
       })
-    }
   }
 
   private generateRandomCode(){
