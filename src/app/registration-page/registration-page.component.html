@@ -3,35 +3,35 @@
     <form class="registration-page-form">
       <h2 class="registration-page-text">Registration</h2>
       <label>Email:</label>
-      <input
+      <input #email
         type="email"
-        id="username"
+        id="email"
         placeholder="email"
         class="registration-page-textinput input"
       />
       <label>Username:</label>
-      <input
+      <input #username
         type="text"
         id="username"
         placeholder="username"
         class="registration-page-textinput input"
       />
       <label>Password:</label>
-      <input
+      <input #password
         type="password"
         id="password"
         placeholder="password"
         class="registration-page-textinput input"
       />
       <label>Confirm password:</label>
-      <input
+      <input #passwordConfirm
         type="password"
-        id="password"
+        id="passwordconfirm"
         placeholder="password"
         class="registration-page-textinput input"
       />
       <div class="registration-page-button-container">
-        <button (click)="buttonRegisterClick()" [disabled]="registering"
+        <button (click)="buttonRegisterClick(email.value, username.value, password.value, passwordConfirm.value)" [disabled]="registering"
                         class="register-button" type="submit">Register<span
                   class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
                   *ngIf="registering"></span>
@@ -44,6 +44,10 @@
         </a>
       </div>
     <div class="text-danger mt-2" *ngIf="registrationError">There was an error while registering, please try again.</div>
+    <div class="text-danger mt-2" *ngIf="inputError">All fields are mandatory</div>
+    <div class="text-danger mt-2" *ngIf="emailError">Email adress is not valid, please try again</div>
+    <div class="text-danger mt-2" *ngIf="usernameError">Username is already taken, please try with a differet username</div>
+    <div class="text-danger mt-2" *ngIf="passwordError">Passwords do not match, please try again</div>
     </form>
   </div>
   

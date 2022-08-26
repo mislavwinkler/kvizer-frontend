@@ -14,6 +14,6 @@ export class RegistrationService {
   }
 
   register(registration: Registration) {
-    return this.http.post<Jwt>(`${this.rootUrl}`, registration);
+    return this.http.post<Registration>(`${this.rootUrl}`, registration);
   }
 }

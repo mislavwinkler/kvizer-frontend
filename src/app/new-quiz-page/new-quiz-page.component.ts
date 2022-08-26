@@ -13,6 +13,7 @@ export class NewQuizPageComponent implements OnInit {
 
   procesing = false;
   error = false;
+  inputError = false;
   quiz = new Quiz(this.generateRandomCode(), '', new Date(Date.now()) ,
       this.authenticationService.getAuthenticatedUserUsername() as string);
 
@@ -30,6 +31,11 @@ export class NewQuizPageComponent implements OnInit {
     this.procesing = true;
     this.quiz.name = name.trim();
 
+    if (name.length == 0){
+      this.inputError = true;
+      this.procesing = false;
+    }
+    else{
     this.quizService.addQuiz(this.quiz)
       .subscribe({
         next: () => {
@@ -40,6 +46,7 @@ export class NewQuizPageComponent implements OnInit {
           this.procesing = false;
         }
       })
+    }
   }
 
   private generateRandomCode(){

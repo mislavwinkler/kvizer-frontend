@@ -19,6 +19,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { QuizPageComponent } from './quiz-page/quiz-page.component';
 import { NewQuizPageComponent } from './new-quiz-page/new-quiz-page.component';
 import { AccountPageComponent } from './account-page/account-page.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { AccountPageComponent } from './account-page/account-page.component';
     FormsModule,
     BrowserAnimationsModule,
     MatIconModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatSnackBarModule
   ],
   providers: [
     {
