@@ -1,12 +1,12 @@
-<p>quiz with code: {{code}}</p>
-
-<ul class="quizes">
-    <li *ngFor="let question of questions">
-        <a routerLink="/detail/{{question.position}}">
-        {{question.question}} -- {{question.answer}}
-        </a>
-        <!-- <button *ngIf="isUserAdmin" class="delete" title="delete hardware"
-                (click)="delete(hardware)">x
-        </button> -->
-    </li>
-</ul>
+<p>{{quiz.name}} | code: {{code}} | created at: {{quiz.creationDate}} | maker: {{quiz.makerName}}</p>
+<div *ngIf="userIsMakerOfThisQuiz" >
+    <ul class="questions">
+        <li *ngFor="let question of questions">
+            <a routerLink="/question/{{question.position}}">
+            {{question.position}}. {{question.question}} -- {{question.answer}}
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="text-danger mt-2" *ngIf="error">An error ocured, please try again</div>
+<div class="text-danger mt-2" *ngIf="quizError">Quiz with that code does not exist</div>

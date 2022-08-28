@@ -5,7 +5,7 @@ export class Quiz {
     creationDate!: Date;
     makerName!: String;
 
-    constructor(code: string, name: string, creationDate: Date, makerName: string) {
+    constructor(code: String, name: String, creationDate: Date, makerName: String) {
         this.code = code;
         this.name = name;
         this.creationDate = creationDate;

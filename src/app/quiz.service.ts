@@ -23,8 +23,8 @@ export class QuizService {
     const url = `${this.quizUrl}/${code}`;
     return this.http.get<Quiz>(url)
       .pipe(
-        tap(_ => console.log(`fetched hardware w/ code=${code}`)),
-        catchError(this.handleError<Quiz>('getHardwareByCode'))
+        tap(_ => console.log(`fetched quiz w/ code=${code}`)),
+        catchError(this.handleError<Quiz>('getQuizByCode'))
       );
     }
 

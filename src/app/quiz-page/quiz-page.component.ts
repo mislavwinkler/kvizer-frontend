@@ -1,8 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import { ActivatedRoute } from '@angular/router';
+import { Quiz } from '../quiz';
 import { Question } from '../question';
 import { QuestionService } from '../question.service';
+import { QuizService } from '../quiz.service';
+import { AuthenticationService } from '../security/authentication.service';
 
 @Component({
   selector: 'app-quiz-page',
@@ -11,24 +14,57 @@ import { QuestionService } from '../question.service';
 })
 export class QuizPageComponent implements OnInit {
 
-  public code : string = ''
+  public code : String = ''
   questions?: Question[];
+  public userIsMakerOfThisQuiz : boolean = false
+  public quiz: Quiz = new Quiz('', '', new Date(''), ''); 
+  error = false;
+  quizError = false;
 
   constructor(
     private questionService: QuestionService,
+    private quizService: QuizService,
+    private authenticationService: AuthenticationService,
     private router: Router,
     private activatedroute : ActivatedRoute
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.code = this.activatedroute.snapshot.paramMap.get("code")!;
-
-    this.getQuestions();
+    this.quizService.getQuizByCode(this.code)
+    .subscribe(
+      {
+        next: (quiz) => {
+          if(quiz != undefined){
+          this.quiz = new Quiz(quiz.code, quiz.name, quiz.creationDate, quiz.makerName)
+          this.isUserMakerOfThisQuiz();
+          this.getQuestions();
+          }
+          else {this.quizError = true;}
+        },
+        error: () => {
+          this.error = true;
+        }
+      }
+    )
   }
 
   getQuestions() {
     this.questionService.getQuestionsByQuizCode(this.code)
-      .subscribe(questions => this.questions = questions);
+      .subscribe(questions => {
+        this.questions = questions
+        questions.sort(function (a, b) {
+          return a.position as number - (b.position as number);
+        })
+      });
+  }
+
+  isUserMakerOfThisQuiz() {
+    if (this.authenticationService.getAuthenticatedUserUsername() as String == this.quiz.makerName)
+          {
+            this.userIsMakerOfThisQuiz = true
+          }
   }
 
 }
