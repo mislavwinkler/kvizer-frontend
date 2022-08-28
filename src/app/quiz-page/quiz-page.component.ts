@@ -6,6 +6,7 @@ import { Question } from '../question';
 import { QuestionService } from '../question.service';
 import { QuizService } from '../quiz.service';
 import { AuthenticationService } from '../security/authentication.service';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-quiz-page',
@@ -18,8 +19,9 @@ export class QuizPageComponent implements OnInit {
   questions?: Question[];
   public userIsMakerOfThisQuiz : boolean = false
   public quiz: Quiz = new Quiz('', '', new Date(''), ''); 
-  error = false;
-  quizError = false;
+  public error = false;
+  public quizError = false;
+  public orderChanged = false;
 
   constructor(
     private questionService: QuestionService,
@@ -66,5 +68,36 @@ export class QuizPageComponent implements OnInit {
             this.userIsMakerOfThisQuiz = true
           }
   }
+
+  drop(event: CdkDragDrop<Question[]>) {
+    moveItemInArray(this.questions!, event.previousIndex, event.currentIndex);
+    this.orderChanged = true;
+    console.log(`order changed`)
+  }
+
+  buttonSaveQuestionOrderClick(){
+    for(let i=0; i < this.questions!.length; i++){
+      if (this.questions![i].position != i+1){
+          this.questionService.updateQuestion(this.quiz.code, this.questions![i].position,
+            new Question(i+1, this.questions![i].question, this.questions![i].answer))
+            .subscribe({
+              next: () => {
+                this.reloadCurrentRoute();
+              },
+              error: () => {
+                this.error = true;
+              }
+            })
+      }
+    }
+    this.orderChanged = false;
+  }
+
+  reloadCurrentRoute() {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigate([currentUrl]);
+    });
+}
 
 }

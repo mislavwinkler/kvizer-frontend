@@ -36,6 +36,17 @@ export class QuestionService {
       );
   }
 
+  updateQuestion(quizCode: String, questionPosition: Number, question: Question): Observable<any> {
+    const url = `${this.questionUrl}/${quizCode}/${questionPosition.toString()}`;
+    console.log(url)
+    this.http.put(url, question)
+    return this.http.put(url, question, this.httpOptions)
+      .pipe(
+        tap(_ => console.log(`updated question`)),
+        catchError(this.handleError<any>('updateQuestion'))
+      );
+  }
+
     private handleError<T>(operation = 'operation', result?: T) {
       return (error: any): Observable<T> => {
         console.error(operation);

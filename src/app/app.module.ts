@@ -20,6 +20,7 @@ import { QuizPageComponent } from './quiz-page/quiz-page.component';
 import { NewQuizPageComponent } from './new-quiz-page/new-quiz-page.component';
 import { AccountPageComponent } from './account-page/account-page.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     BrowserAnimationsModule,
     MatIconModule,
     FlexLayoutModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    DragDropModule
   ],
   providers: [
     {
