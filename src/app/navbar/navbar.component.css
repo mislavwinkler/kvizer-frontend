@@ -58,19 +58,24 @@
 .navbartop-btn{
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 0.3rem;
-  padding-bottom: 0.3rem;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
 }
 .new-button {
   color: var(--color-primary);
   border-color: var(--color-accent);
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 0.3rem;
-  padding-bottom: 0.3rem;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
   border-width: 1px;
   border-radius: 50px;
   background-color: var(--color-accent);
+}
+.logout-container{
+  color: var(--color-accent);
+  margin-left: 1rem;
+  text-align: end;
 }
 
 @media (max-width: 991px) {
@@ -108,7 +113,7 @@
  }
   .navbar-opened:host .top-navbar a {
     display: block;
-    width: 100%;
+    width: 90%;
     line-height: 56px !important;
  }
 }

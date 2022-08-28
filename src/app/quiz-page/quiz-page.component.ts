@@ -78,8 +78,8 @@ export class QuizPageComponent implements OnInit {
   buttonSaveQuestionOrderClick(){
     for(let i=0; i < this.questions!.length; i++){
       if (this.questions![i].position != i+1){
-          this.questionService.updateQuestion(this.quiz.code, this.questions![i].position,
-            new Question(i+1, this.questions![i].question, this.questions![i].answer))
+          this.questionService.updateQuestion(this.questions![i].id,
+            new Question(this.questions![i].id, i+1, this.questions![i].question, this.questions![i].answer))
             .subscribe({
               next: () => {
                 this.reloadCurrentRoute();

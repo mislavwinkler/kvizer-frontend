@@ -1,5 +1,6 @@
 import { Component, HostBinding, HostListener, OnInit } from '@angular/core';
-
+import { AuthenticationService } from '../security/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -8,9 +9,13 @@ import { Component, HostBinding, HostListener, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   isFixedNavbar = false;
+
   @HostBinding('class.navbar-opened') navbarOpened = false;
   constructor(
-  ) { }
+    public authenticationService: AuthenticationService,
+    private router: Router
+  ) { 
+  }
   ngOnInit() {
   }
   @HostListener('window:scroll', [])
@@ -27,4 +32,8 @@ export class NavbarComponent implements OnInit {
     this.navbarOpened = !this.navbarOpened;
   }
 
+  logout() {
+    this.authenticationService.logout();
+    this.router.navigate(['/login']).then();
+  }
 }

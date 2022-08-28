@@ -1,9 +1,6 @@
 <app-navbar *ngIf="authenticationService.isUserAuthenticated()"></app-navbar>
 
-<div [ngStyle]="{'padding-top':authenticationService.isUserAuthenticated() ? '70px;' : '0px'}">
-  <div style="text-align: end; padding-right: 2rem;" *ngIf="authenticationService.isUserAuthenticated()">You are logged in as
-    <strong>{{authenticationService.getAuthenticatedUserUsername()}}</strong> | <a href="#" (click)="logout()" class="link-primary">Logout</a>
-  </div>
+<div [ngStyle]="{'padding-top':authenticationService.isUserAuthenticated() ? '80px;' : '0px'}">
   <div class="m-5">
     <router-outlet></router-outlet>
   </div>

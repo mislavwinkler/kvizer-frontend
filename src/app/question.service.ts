@@ -36,9 +36,8 @@ export class QuestionService {
       );
   }
 
-  updateQuestion(quizCode: String, questionPosition: Number, question: Question): Observable<any> {
-    const url = `${this.questionUrl}/${quizCode}/${questionPosition.toString()}`;
-    console.log(url)
+  updateQuestion(questionId: Number, question: Question): Observable<any> {
+    const url = `${this.questionUrl}/${questionId.toString()}`;
     this.http.put(url, question)
     return this.http.put(url, question, this.httpOptions)
       .pipe(

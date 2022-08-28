@@ -3,7 +3,7 @@
     <div cdkDropList class="question-list" (cdkDropListDropped)="drop($event)">
         <div class="question-box" *ngFor="let question of questions" cdkDrag>
           <div class="question-custom-placeholder" *cdkDragPlaceholder></div>
-          {{question.position}}. {{question.question}}<br/>-- {{question.answer}}
+          {{question.position}}. {{question.question}}<br/>---- {{question.answer}}
           <a routerLink="/question/{{question.position}}">Edit</a>
         </div>
     </div>

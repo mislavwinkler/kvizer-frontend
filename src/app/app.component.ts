@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {AuthenticationService} from "./security/authentication.service";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -11,13 +10,9 @@ export class AppComponent {
   title = 'kvizer-frontend';
 
   constructor(
-    public authenticationService: AuthenticationService,
-    private router: Router
+    public authenticationService: AuthenticationService
   ) {
   }
 
-  logout() {
-    this.authenticationService.logout();
-    this.router.navigate(['/login']).then();
-  }
+  
 }
