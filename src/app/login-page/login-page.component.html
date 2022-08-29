@@ -12,8 +12,8 @@
       placeholder="password" required type="password"
       />
       <div class="login-page-button-container">
-        <button (click)="buttonLoginClick()" [disabled]="authenticating"
-                        class="login-button" type="submit">Login<span
+        <button (click)="buttonLoginClick()" [disabled]="authenticating || login.username == '' || login.password == ''"
+                        class="black-button" type="submit">Login<span
                   class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
                   *ngIf="authenticating"></span>
                 </button>

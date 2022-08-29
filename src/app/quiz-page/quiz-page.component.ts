@@ -17,7 +17,8 @@ import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 export class QuizPageComponent implements OnInit {
 
   public code : String = ''
-  questions?: Question[];
+  questions!: Question[];
+  currentQuestionPosition: number = 0;
   public userIsMakerOfThisQuiz : boolean = false
   public quiz: Quiz = new Quiz('', '', new Date(''), ''); 
   public error = false;
@@ -85,6 +86,13 @@ export class QuizPageComponent implements OnInit {
     this.closeFullscreen();
     this.quizStarted = false;
   }
+  buttonNextQuestionClick(){
+    this.currentQuestionPosition = this.currentQuestionPosition + 1    
+  }
+  buttonPreviousQuestionClick(){
+    this.currentQuestionPosition = this.currentQuestionPosition - 1
+  }
+
 
   reloadCurrentRoute() {
     const currentUrl = this.router.url;

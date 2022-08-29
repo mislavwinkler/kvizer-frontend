@@ -10,18 +10,8 @@
 .home-page-textinput {
     width: 80%;
     height: 3rem;
+    margin-bottom: 1rem;
 }
-.join-button {
-    color: var(--color-primary);
-    margin-top: 1rem;
-    border: none;
-    padding-top: 0.5rem;
-    padding-left: 2rem;
-    border-radius: 50px;
-    padding-right: 2rem;
-    padding-bottom: 0.5rem;
-    background-color: var(--color-accent);
-  }
 
 @media(max-width: 767px) {
 .home-page-content-container {

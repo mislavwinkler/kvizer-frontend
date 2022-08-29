@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
 import {Router} from "@angular/router";
 import { ActivatedRoute } from '@angular/router';
 import { Quiz } from '../quiz';
@@ -8,6 +7,7 @@ import { QuestionService } from '../question.service';
 import { QuizService } from '../quiz.service';
 import { AuthenticationService } from '../security/authentication.service';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-edit-quiz-page',
@@ -29,7 +29,8 @@ export class EditQuizPageComponent implements OnInit {
     private quizService: QuizService,
     private authenticationService: AuthenticationService,
     private router: Router,
-    private activatedroute : ActivatedRoute
+    private activatedroute : ActivatedRoute,
+    public location: Location
   ) {
   }
 
@@ -92,6 +93,10 @@ export class EditQuizPageComponent implements OnInit {
       }
     }
     this.orderChanged = false;
+  }
+
+  buttonGoBackClick(){
+    this.location.back()
   }
 
   reloadCurrentRoute() {

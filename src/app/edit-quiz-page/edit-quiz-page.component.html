@@ -8,14 +8,20 @@
           <a routerLink="/question/{{question.id}}">Edit</a>
         </div>
     </div>
-    <button (click)="buttonSaveQuestionOrderClick()" *ngIf="orderChanged"
-      class="update-button" type="submit">Save question order
-      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-    </button>
-    <button (click)="reloadCurrentRoute()" *ngIf="orderChanged"
-      class="back-button" type="submit">Cancel
-      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-    </button>
+    <div class="edit-quiz-page-button-container">
+      <button (click)="buttonGoBackClick()"
+        class="back-button white-button" type="submit">Go back
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      </button>
+      <button (click)="reloadCurrentRoute()" *ngIf="orderChanged"
+        class="white-button" type="submit">Cancel
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      </button>
+      <button (click)="buttonSaveQuestionOrderClick()" *ngIf="orderChanged"
+        class="black-button" type="submit">Save question order
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      </button>
+    </div>
 </div>
 
 <div class="text-danger mt-2" *ngIf="error">An error ocured, please try again</div>

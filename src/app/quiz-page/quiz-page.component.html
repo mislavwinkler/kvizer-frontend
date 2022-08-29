@@ -2,19 +2,33 @@
 
 <div *ngIf="userIsMakerOfThisQuiz && quizStarted == false" >
   <button (click)="buttonStartQuizClick()"
-    class="update-button" type="submit">Start quiz
+    class="black-button" type="submit">Start quiz
     <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
   </button>
   <button (click)="buttonEditQuizClick()"
-    class="update-button" type="submit">Edit quiz
+    class="white-button" type="submit">Edit quiz
     <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
   </button>
 </div>
+<div *ngIf="quizStarted" class="question-container" >
 
-<button *ngIf="quizStarted" (click)="buttonEndQuizClick()"
-      class="update-button" type="submit">End quiz
-      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-    </button>
+  <p>{{questions[currentQuestionPosition].position}}. - {{questions[currentQuestionPosition].question}}</p><br>
+  
 
+  <button (click)="buttonPreviousQuestionClick()"
+  [disabled]="currentQuestionPosition == 0"
+  class="black-button" type="submit">Previous
+  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+</button>
+<button (click)="buttonNextQuestionClick()"
+[disabled]="currentQuestionPosition == questions.length - 1"
+  class="black-button" type="submit">Next
+  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+</button>
+<button (click)="buttonEndQuizClick()"
+  class="white-button" type="submit">End quiz
+  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+</button>
+</div>
 <div class="text-danger mt-2" *ngIf="error">An error ocured, please try again</div>
 <div class="text-danger mt-2" *ngIf="quizError">Quiz with that code does not exist</div>

@@ -2,7 +2,7 @@
     width: 100%;
     display: flex;
     overflow: auto;
-    min-height: 100vh;
+    
     align-items: center;
     flex-direction: column;
   }
@@ -21,18 +21,6 @@
     align-items: center;
     flex-direction: column;
   }
-  .new-quiz-button {
-    color: var(--color-accent);
-    padding-top: 1rem;
-    border-color: var(--color-accent);
-    border-width: 1px;
-    padding-left: 2rem;
-    border-radius: 50px;
-    padding-right: 2rem;
-    padding-bottom: 1rem;
-    background-color: var(--color-primary);
-  }
-
 
   @media(max-width: 991px) {
     .new-quiz-page-form {
