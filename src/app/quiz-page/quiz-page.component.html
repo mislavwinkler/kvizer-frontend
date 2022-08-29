@@ -2,24 +2,13 @@
 
 <div *ngIf="userIsMakerOfThisQuiz && quizStarted == false" >
   <button (click)="buttonStartQuizClick()"
-      class="update-button" type="submit">Start quiz
-      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-    </button>
-    <div cdkDropList class="question-list" (cdkDropListDropped)="drop($event)">
-        <div class="question-box" *ngFor="let question of questions" cdkDrag>
-          <div class="question-custom-placeholder" *cdkDragPlaceholder></div>
-          {{question.position}}. {{question.question}}<br/>---- {{question.answer}}
-          <a routerLink="/question/{{question.id}}">Edit</a>
-        </div>
-    </div>
-    <button (click)="buttonSaveQuestionOrderClick()" *ngIf="orderChanged"
-      class="update-button" type="submit">Save question order
-      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-    </button>
-    <button (click)="reloadCurrentRoute()" *ngIf="orderChanged"
-      class="back-button" type="submit">Cancel
-      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-    </button>
+    class="update-button" type="submit">Start quiz
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  </button>
+  <button (click)="buttonEditQuizClick()"
+    class="update-button" type="submit">Edit quiz
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  </button>
 </div>
 
 <button *ngIf="quizStarted" (click)="buttonEndQuizClick()"

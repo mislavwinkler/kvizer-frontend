@@ -5,6 +5,7 @@ import {RegistrationPageComponent} from "./registration-page/registration-page.c
 import {LoggedInGuard} from "./security/logged-in.guard";
 import {HomePageComponent} from "./home-page/home-page.component";
 import {QuizPageComponent} from "./quiz-page/quiz-page.component";
+import { EditQuizPageComponent } from './edit-quiz-page/edit-quiz-page.component';
 import {NewQuizPageComponent} from "./new-quiz-page/new-quiz-page.component";
 import {AccountPageComponent} from "./account-page/account-page.component";
 import {QuestionPageComponent } from './question-page/question-page.component';
@@ -34,6 +35,11 @@ const routes: Routes = [
   {
     path: 'quiz/:code',
     component: QuizPageComponent,
+    canActivate: [LoggedInGuard]
+  },
+  {
+    path: 'quiz/edit/:code',
+    component: EditQuizPageComponent,
     canActivate: [LoggedInGuard]
   },
   {

@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import {Router} from "@angular/router";
 import { ActivatedRoute } from '@angular/router';
@@ -10,11 +10,11 @@ import { AuthenticationService } from '../security/authentication.service';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Component({
-  selector: 'app-quiz-page',
-  templateUrl: './quiz-page.component.html',
-  styleUrls: ['./quiz-page.component.css']
+  selector: 'app-edit-quiz-page',
+  templateUrl: './edit-quiz-page.component.html',
+  styleUrls: ['./edit-quiz-page.component.css']
 })
-export class QuizPageComponent implements OnInit {
+export class EditQuizPageComponent implements OnInit {
 
   public code : String = ''
   questions?: Question[];
@@ -23,21 +23,17 @@ export class QuizPageComponent implements OnInit {
   public error = false;
   public quizError = false;
   public orderChanged = false;
-  public quizStarted = false;
-  elem: any;
 
   constructor(
     private questionService: QuestionService,
     private quizService: QuizService,
     private authenticationService: AuthenticationService,
     private router: Router,
-    private activatedroute : ActivatedRoute,
-    @Inject(DOCUMENT) private document: any
+    private activatedroute : ActivatedRoute
   ) {
   }
 
   ngOnInit(): void {
-    this.elem = document.documentElement;
     this.code = this.activatedroute.snapshot.paramMap.get("code")!;
     this.quizService.getQuizByCode(this.code)
     .subscribe(
@@ -74,16 +70,28 @@ export class QuizPageComponent implements OnInit {
           }
   }
 
-  buttonStartQuizClick(){
-    this.openFullscreen();
-    this.quizStarted = true;
+  drop(event: CdkDragDrop<Question[]>) {
+    moveItemInArray(this.questions!, event.previousIndex, event.currentIndex);
+    this.orderChanged = true;
+    console.log(`order changed`)
   }
-  buttonEditQuizClick(){
-    this.router.navigateByUrl("/quiz/edit/"+ this.code);
-  }
-  buttonEndQuizClick(){
-    this.closeFullscreen();
-    this.quizStarted = false;
+
+  buttonSaveQuestionOrderClick(){
+    for(let i=0; i < this.questions!.length; i++){
+      if (this.questions![i].position != i+1){
+          this.questionService.updateQuestion(this.questions![i].id,
+            new Question(this.questions![i].id, i+1, this.questions![i].question, this.questions![i].answer))
+            .subscribe({
+              next: () => {
+                this.reloadCurrentRoute();
+              },
+              error: () => {
+                this.error = true;
+              }
+            })
+      }
+    }
+    this.orderChanged = false;
   }
 
   reloadCurrentRoute() {
@@ -92,34 +100,4 @@ export class QuizPageComponent implements OnInit {
         this.router.navigate([currentUrl]);
     });
   } 
-
-  openFullscreen() {
-    if (this.elem.requestFullscreen) {
-      this.elem.requestFullscreen();
-    } else if (this.elem.mozRequestFullScreen) {
-      /* Firefox */
-      this.elem.mozRequestFullScreen();
-    } else if (this.elem.webkitRequestFullscreen) {
-      /* Chrome, Safari and Opera */
-      this.elem.webkitRequestFullscreen();
-    } else if (this.elem.msRequestFullscreen) {
-      /* IE/Edge */
-      this.elem.msRequestFullscreen();
-    }
-  }
-/* Close fullscreen */
-  closeFullscreen() {
-    if (this.document.exitFullscreen) {
-      this.document.exitFullscreen();
-    } else if (this.document.mozCancelFullScreen) {
-      /* Firefox */
-      this.document.mozCancelFullScreen();
-    } else if (this.document.webkitExitFullscreen) {
-      /* Chrome, Safari and Opera */
-      this.document.webkitExitFullscreen();
-    } else if (this.document.msExitFullscreen) {
-      /* IE/Edge */
-      this.document.msExitFullscreen();
-    }
-  }
 }

@@ -1,0 +1,22 @@
+<p>{{quiz.name}} | code: {{code}} | created at: {{quiz.creationDate}} | maker: {{quiz.makerName}}</p>
+
+<div *ngIf="userIsMakerOfThisQuiz">
+    <div cdkDropList class="question-list" (cdkDropListDropped)="drop($event)">
+        <div class="question-box" *ngFor="let question of questions" cdkDrag>
+          <div class="question-custom-placeholder" *cdkDragPlaceholder></div>
+          {{question.position}}. {{question.question}}<br/>---- {{question.answer}}
+          <a routerLink="/question/{{question.id}}">Edit</a>
+        </div>
+    </div>
+    <button (click)="buttonSaveQuestionOrderClick()" *ngIf="orderChanged"
+      class="update-button" type="submit">Save question order
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    </button>
+    <button (click)="reloadCurrentRoute()" *ngIf="orderChanged"
+      class="back-button" type="submit">Cancel
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    </button>
+</div>
+
+<div class="text-danger mt-2" *ngIf="error">An error ocured, please try again</div>
+<div class="text-danger mt-2" *ngIf="quizError">Quiz with that code does not exist</div>
