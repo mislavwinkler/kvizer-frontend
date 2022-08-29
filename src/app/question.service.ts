@@ -19,6 +19,15 @@ export class QuestionService {
     private http: HttpClient
   ) { }
 
+  getQuestionById(id: String): Observable<Question> {
+    const url = `${this.questionUrl}/id=${id}`;
+    return this.http.get<Question>(url)
+      .pipe(
+        tap(_ => console.log(`fetched question w/ id=${id}`)),
+        catchError(this.handleError<Question>('getQuestionById'))
+      );
+    }
+
   getQuestionsByQuizCode(code: String): Observable<Question[]> {
     const url = `${this.questionUrl}/${code}`;
     return this.http.get<Question[]>(url)

@@ -1,0 +1,30 @@
+<div class="question-page-content-container">
+    <form #questionForm="ngForm" class="question-page-form" name="questionForm">
+        <label>Question:</label>
+        <textarea rows="5" [(ngModel)]="question.question" [disabled]="updating"
+            class="question-page-textinput input" name="question"
+        placeholder="question"
+        ></textarea>
+        <label>Answer:</label>
+        <textarea rows="5" [(ngModel)]="question.answer" [disabled]="updating"
+            class="question-page-textinput input" name="answer"
+        placeholder="question" type="text"
+        ></textarea>
+        <div class="question-page-button-container">
+        <button (click)="buttonUpdateClick()" [disabled]="updating"
+            class="update-button" type="submit">Update question<span
+            class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
+            *ngIf="updating"></span>
+        </button>
+        <button (click)="location.back()" [disabled]="updating"
+            class="back-button">Go back without saving<span
+            class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
+            *ngIf="updating"></span>
+        </button>
+        </div>
+        <div class="text-error" *ngIf="error">There was an error attempting to update question, please try again.</div>
+    </form>
+
+    <div class="text-danger mt-2" *ngIf="error">An error ocured, please try again</div>
+    <div class="text-danger mt-2" *ngIf="questionError">question with that ID does not exist</div>
+</div>

@@ -7,6 +7,7 @@ import {HomePageComponent} from "./home-page/home-page.component";
 import {QuizPageComponent} from "./quiz-page/quiz-page.component";
 import {NewQuizPageComponent} from "./new-quiz-page/new-quiz-page.component";
 import {AccountPageComponent} from "./account-page/account-page.component";
+import {QuestionPageComponent } from './question-page/question-page.component';
 import {ForbiddenPageComponent} from "./forbidden-page/forbidden-page.component";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {AdminAuthorityGuard} from "./security/admin-authority.guard";
@@ -36,6 +37,11 @@ const routes: Routes = [
     canActivate: [LoggedInGuard]
   },
   {
+    path: 'question/:questionId',
+    component: QuestionPageComponent,
+    canActivate: [LoggedInGuard]
+  },
+  {
     path: 'account',
     component: AccountPageComponent,
     canActivate: [LoggedInGuard]
@@ -46,8 +52,8 @@ const routes: Routes = [
     canActivate: [LoggedInGuard]
   },
   /*{
-    path: 'new-hardware',
-    component: HardwareNewComponent,
+    path: 'new-quiz',
+    component: QuizNewComponent,
     canActivate: [AdminAuthorityGuard]
   },*/
   {

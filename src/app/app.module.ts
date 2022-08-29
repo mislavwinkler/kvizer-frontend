@@ -21,6 +21,7 @@ import { NewQuizPageComponent } from './new-quiz-page/new-quiz-page.component';
 import { AccountPageComponent } from './account-page/account-page.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { QuestionPageComponent } from './question-page/question-page.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     NavbarComponent,
     QuizPageComponent,
     NewQuizPageComponent,
-    AccountPageComponent
+    AccountPageComponent,
+    QuestionPageComponent
   ],
   imports: [
     BrowserModule,

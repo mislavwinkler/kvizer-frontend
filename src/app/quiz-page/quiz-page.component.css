@@ -22,6 +22,39 @@
     background: white;
     font-size: 14px;
   }
+
+  .update-button {
+    color: var(--color-primary);
+    padding-top: 1rem;
+    border-color: var(--color-accent);
+    border-width: 1px;
+    padding-left: 2rem;
+    border-radius: 50px;
+    padding-right: 2rem;
+    padding-bottom: 1rem;
+    background-color: var(--color-accent);
+    margin: 3px;
+  }
+  .update-button:hover {
+    border-width: 3px;
+    margin: 1px;
+  }
+  .back-button {
+    color: var(--color-accent);
+    padding-top: 1rem;
+    border-color: var(--color-accent);
+    border-width: 1px;
+    padding-left: 2rem;
+    border-radius: 50px;
+    padding-right: 2rem;
+    padding-bottom: 1rem;
+    background-color: var(--color-primary);
+    margin: 3px;
+  }
+  .back-button:hover {
+    border-width: 3px;
+    margin: 1px;
+  }
   
   .cdk-drag-preview {
     box-sizing: border-box;
