@@ -11,7 +11,7 @@ import {Location} from '@angular/common';
 })
 export class QuestionPageComponent implements OnInit {
   public questionId : Number = 0;
-  public question: Question = new Question(0, 0, '', '');
+  public question: Question = new Question(0, 0, '', '', '', '');
   public error = false;
   public questionError = false;
   updating = false;
@@ -28,7 +28,7 @@ export class QuestionPageComponent implements OnInit {
       {
         next: (question) => {
           if(question != undefined){
-            this.question = new Question(question.id, question.position, question.question, question.answer)
+            this.question = new Question(question.id, question.position, question.question, question.answer, question.imgPath, question.quizCode)
             }
             else {this.questionError = true;}
         },
