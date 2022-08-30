@@ -1,3 +1,21 @@
+.quiz-page-content-container{
+  display: flex;
+  align-self: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 2rem;
+}
+.question-container{
+  display: flex;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  width: 100%;
+  margin-top: 4rem;
+}
+
 .question-list {
     width: 500px;
     max-width: 100%;

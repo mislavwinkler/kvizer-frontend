@@ -1,17 +1,17 @@
 <div class="home-page-content-container">
     <h1 class="heading landing-page-join-text">Join quiz</h1>
-    <input #code
-      type="text"
-      placeholder="quiz code"
-      class="home-page-textinput input"
-    />
-    <button
-    (click)="buttonJoinClick(code.value)"
-    [disabled]="joining"
-    class="black-button">Join<span
-    class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
-    *ngIf="joining"></span>
-    </button>
+    <form>
+      <input #code
+        type="text"
+        placeholder="quiz code"
+        class="home-page-textinput input"
+      />
+      <button
+        (click)="buttonJoinClick(code.value)" [disabled]="joining" 
+        class="black-button" type="submit">
+        Join
+      </button>
+    </form>
     <div class="text-danger mt-2" *ngIf="joinError">There was an error attempting to join, please check quiz code and try again.</div>
     <div class="text-danger mt-2" *ngIf="codeError">Quiz code must have 6 characters</div>
     <div class="text-danger mt-2" *ngIf="noQuizError">Quiz with that code does not exist</div>

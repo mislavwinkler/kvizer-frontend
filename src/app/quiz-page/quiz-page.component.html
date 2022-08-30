@@ -1,34 +1,70 @@
-<p>{{quiz.name}} | code: {{code}} | created at: {{quiz.creationDate}} | maker: {{quiz.makerName}}</p>
+<div class="quiz-page-content-container" *ngIf=" quizStarted == false" >
+  <h1 class="heading">{{quiz.name}}</h1>
+  <p>code: {{code}}</p>
+  <p>created at: {{quiz.creationDate}}</p>
+  <p>maker: {{quiz.makerName}}</p>
 
-<div *ngIf="userIsMakerOfThisQuiz && quizStarted == false" >
-  <button (click)="buttonStartQuizClick()"
-    class="black-button" type="submit">Start quiz
-    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-  </button>
-  <button (click)="buttonEditQuizClick()"
-    class="white-button" type="submit">Edit quiz
-    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-  </button>
+  <div *ngIf="userIsMakerOfThisQuiz && quizStarted == false" >
+    <button (click)="buttonStartQuizClick()"
+      class="black-button" type="submit">Start quiz
+    </button>
+    <button (click)="buttonEditQuizClick()"
+      class="white-button" type="submit">Edit quiz
+    </button>
+  </div>
+  <div *ngIf="userIsMakerOfThisQuiz == false && quizStarted == false" >
+    <button (click)="buttonStartQuizClick()"
+      class="black-button" type="submit">Join quiz
+    </button>
+  </div>
 </div>
-<div *ngIf="quizStarted" class="question-container" >
 
-  <p>{{questions[currentQuestionPosition].position}}. - {{questions[currentQuestionPosition].question}}</p><br>
+
+
+<div *ngIf="userIsMakerOfThisQuiz && quizStarted" class="quiz-page-content-container" >
   
+  <div class="question-container" >
+    <h1 class="heading"> {{questions[currentQuestionPosition].position}}. 
+      - {{questions[currentQuestionPosition].question}}</h1>
+  </div>
 
-  <button (click)="buttonPreviousQuestionClick()"
-  [disabled]="currentQuestionPosition == 0"
-  class="black-button" type="submit">Previous
-  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-</button>
-<button (click)="buttonNextQuestionClick()"
-[disabled]="currentQuestionPosition == questions.length - 1"
-  class="black-button" type="submit">Next
-  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-</button>
-<button (click)="buttonEndQuizClick()"
-  class="white-button" type="submit">End quiz
-  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-</button>
+  <div>
+    <button (click)="buttonPreviousQuestionClick()"
+      [disabled]="currentQuestionPosition == 0"
+      class="black-button" type="submit">Previous
+    </button>
+    <button (click)="buttonNextQuestionClick()"
+      [disabled]="currentQuestionPosition == questions.length - 1"
+      class="black-button" type="submit">Next
+    </button>
+  </div>
+
+    <button (click)="buttonEndQuizClick()"
+      class="white-button" type="submit">End quiz
+    </button>
+    
 </div>
+
+<div *ngIf="userIsMakerOfThisQuiz == false && quizStarted" class="quiz-page-content-container" >
+  <form>
+    <div *ngFor="let answer of answers ;; index as i">
+      <label>{{i+1}}. </label>
+      <textarea [(ngModel)]="answers[i]" 
+      class="input" name="password"
+      placeholder="answer" required type="text"
+      ></textarea>
+    </div>
+    <div class="login-page-button-container">
+      <button (click)="buttonSubmitAnswersClick()"
+        class="black-button" type="submit">Submit answers
+      </button>
+      <button (click)="buttonEndQuizClick()"
+      class="white-button" type="submit">Exit
+    </button>
+    </div>
+  </form>
+</div>
+
+
 <div class="text-danger mt-2" *ngIf="error">An error ocured, please try again</div>
 <div class="text-danger mt-2" *ngIf="quizError">Quiz with that code does not exist</div>

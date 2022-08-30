@@ -40,7 +40,7 @@ export class QuestionService {
   addQuestions(question: Question): Observable<Question> {
     return this.http.post<Question>(this.questionUrl, question, this.httpOptions)
       .pipe(
-        tap((newQuestion: Question) => console.log(`added question w position=${newQuestion.position}`)),
+        tap((newQuestion: Question) => console.log(`added question w id=${newQuestion.id}`)),
         catchError(this.handleError<Question>('addQuestion'))
       );
   }

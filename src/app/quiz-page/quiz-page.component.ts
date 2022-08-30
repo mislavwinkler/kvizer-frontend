@@ -7,7 +7,6 @@ import { Question } from '../question';
 import { QuestionService } from '../question.service';
 import { QuizService } from '../quiz.service';
 import { AuthenticationService } from '../security/authentication.service';
-import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-quiz-page',
@@ -19,6 +18,7 @@ export class QuizPageComponent implements OnInit {
   public code : String = ''
   questions!: Question[];
   currentQuestionPosition: number = 0;
+  answers!: String[] ;
   public userIsMakerOfThisQuiz : boolean = false
   public quiz: Quiz = new Quiz('', '', new Date(''), ''); 
   public error = false;
@@ -65,6 +65,7 @@ export class QuizPageComponent implements OnInit {
         questions.sort(function (a, b) {
           return a.position as number - (b.position as number);
         })
+        this.answers = [].constructor(this.questions.length)
       });
   }
 
@@ -91,6 +92,10 @@ export class QuizPageComponent implements OnInit {
   }
   buttonPreviousQuestionClick(){
     this.currentQuestionPosition = this.currentQuestionPosition - 1
+  }
+
+  buttonSubmitAnswersClick(){
+    console.log(this.answers)
   }
 
 

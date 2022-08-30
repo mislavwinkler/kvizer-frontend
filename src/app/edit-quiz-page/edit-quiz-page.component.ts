@@ -17,12 +17,13 @@ import {Location} from '@angular/common';
 export class EditQuizPageComponent implements OnInit {
 
   public code : String = ''
-  questions?: Question[];
-  public userIsMakerOfThisQuiz : boolean = false
+  questions?: Question[]
+  public userIsMakerOfThisQuiz : boolean = false 
   public quiz: Quiz = new Quiz('', '', new Date(''), ''); 
-  public error = false;
-  public quizError = false;
-  public orderChanged = false;
+  public newQuestion: Question = new Question(0, 0, '', '')
+  public error = false
+  public quizError = false
+  public orderChanged = false
 
   constructor(
     private questionService: QuestionService,
@@ -52,6 +53,19 @@ export class EditQuizPageComponent implements OnInit {
         }
       }
     )
+  }
+
+  buttonSubmitQuestionClick(){
+    this.newQuestion.position = this.questions!.length + 1
+    this.questionService.addQuestions(this.newQuestion)
+      .subscribe({
+        next: () => {
+          this.reloadCurrentRoute();
+        },
+        error: () => {
+          this.error = true;
+        }
+      })
   }
 
   getQuestions() {

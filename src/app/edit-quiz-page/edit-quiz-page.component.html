@@ -1,6 +1,28 @@
 <p>{{quiz.name}} | code: {{code}} | created at: {{quiz.creationDate}} | maker: {{quiz.makerName}}</p>
 
 <div *ngIf="userIsMakerOfThisQuiz">
+
+  <form #authenticationForm="ngForm" class="edit-quiz-page-form" name="authenticationForm">
+    <div class="edit-quiz-page-input-container">
+      <label>Question</label>
+      <textarea [(ngModel)]="newQuestion.question"
+      class="input" name="question" rows="3" cols="40"
+      placeholder="question" required type="text"
+      ></textarea>
+    </div>
+    <div class="edit-quiz-page-input-container">
+      <label>Answer</label>
+      <textarea [(ngModel)]="newQuestion.answer"
+      class="input" name="answer" rows="3" cols="30"
+      placeholder="answer" required type="text"
+      ></textarea>
+    </div>
+      <button (click)="buttonSubmitQuestionClick()" [disabled]="newQuestion.question == '' || newQuestion.answer == ''"
+        class="black-button" type="submit">Submit new question
+      </button>
+    
+  </form>
+
     <div cdkDropList class="question-list" (cdkDropListDropped)="drop($event)">
         <div class="question-box" *ngFor="let question of questions" cdkDrag>
           <div class="question-custom-placeholder" *cdkDragPlaceholder></div>
