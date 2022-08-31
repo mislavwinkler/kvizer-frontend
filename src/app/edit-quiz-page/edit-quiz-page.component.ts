@@ -96,7 +96,7 @@ export class EditQuizPageComponent implements OnInit {
   buttonSaveQuestionOrderClick(){
     for(let i=0; i < this.questions!.length; i++){
       if (this.questions![i].position != i+1){
-          this.questionService.updateQuestion(this.questions![i].id,
+          this.questionService.updateQuestion(
             new Question(this.questions![i].id, i+1, this.questions![i].question, this.questions![i].answer, this.questions![i].imgPath ?? '', this.code))
             .subscribe({
               next: () => {

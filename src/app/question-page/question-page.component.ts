@@ -43,7 +43,7 @@ export class QuestionPageComponent implements OnInit {
     this.error = false;
     this.updating = true;
 
-    this.questionService.updateQuestion(this.question.id, this.question).subscribe(
+    this.questionService.updateQuestion(this.question).subscribe(
       {
         next: () => {
           this.location.back()

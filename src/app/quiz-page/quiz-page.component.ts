@@ -7,6 +7,8 @@ import { Question } from '../question';
 import { QuestionService } from '../question.service';
 import { QuizService } from '../quiz.service';
 import { AuthenticationService } from '../security/authentication.service';
+import { Answer } from '../answer';
+import { AnswerService } from '../answer.service';
 
 @Component({
   selector: 'app-quiz-page',
@@ -23,6 +25,7 @@ export class QuizPageComponent implements OnInit {
   public quiz: Quiz = new Quiz('', '', new Date(''), ''); 
   public error = false;
   public quizError = false;
+  public answersError = false;
   public orderChanged = false;
   public quizStarted = false;
   elem: any;
@@ -33,8 +36,10 @@ export class QuizPageComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private router: Router,
     private activatedroute : ActivatedRoute,
+    private answerService: AnswerService,
     @Inject(DOCUMENT) private document: any
   ) {
+    
   }
 
   ngOnInit(): void {
@@ -95,7 +100,17 @@ export class QuizPageComponent implements OnInit {
   }
 
   buttonSubmitAnswersClick(){
-    console.log(this.answers)
+    this.answersError = false;
+    for(var i = 0; i < this.questions.length; i++){
+      this.answerService.addAnswer(new Answer(0, this.answers[i], this.questions[i].id, this.authenticationService.getAuthenticatedUserUsername() as String)).subscribe({
+        error: () => {
+          this.answersError = true;
+        }
+      })
+    }
+    if (!this.answersError){
+      this.reloadCurrentRoute()
+    }
   }
 
 
@@ -120,7 +135,7 @@ export class QuizPageComponent implements OnInit {
       this.elem.msRequestFullscreen();
     }
   }
-/* Close fullscreen */
+  
   closeFullscreen() {
     if (this.document.exitFullscreen) {
       this.document.exitFullscreen();
@@ -135,4 +150,8 @@ export class QuizPageComponent implements OnInit {
       this.document.msExitFullscreen();
     }
   }
+
+  trackByFn(index: any, item: any) {
+    return index;
+ }
 }
