@@ -19,6 +19,15 @@ export class QuizService {
     private http: HttpClient
   ) { }
 
+  getAllQuizes(): Observable<Quiz[]> {
+    const url = this.quizUrl;
+    return this.http.get<Quiz[]>(url)
+      .pipe(
+        tap(_ => console.log(`fetched all quizes`)),
+        catchError(this.handleError<Quiz[]>('getAllQuizes'))
+      );
+    }
+
   getQuizByCode(code: String): Observable<Quiz> {
     const url = `${this.quizUrl}/${code}`;
     return this.http.get<Quiz>(url)
