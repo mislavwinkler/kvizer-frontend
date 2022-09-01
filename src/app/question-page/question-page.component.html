@@ -12,14 +12,13 @@
         ></textarea>
         <div class="question-page-button-container">
         <button (click)="buttonUpdateClick()" [disabled]="updating"
-            class="update-button" type="submit">Update question<span
-            class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
-            *ngIf="updating"></span>
+            class="update-button" type="submit">Update question
         </button>
         <button (click)="location.back()" [disabled]="updating"
-            class="back-button">Go back without saving<span
-            class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
-            *ngIf="updating"></span>
+            class="back-button" type="button">Go back without saving
+        </button>
+        <button (click)="delete()" [disabled]="updating"
+            class="delete-button" type="button">Delete question
         </button>
         </div>
         <div class="text-error" *ngIf="error">There was an error attempting to update question, please try again.</div>

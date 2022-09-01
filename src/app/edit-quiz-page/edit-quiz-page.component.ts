@@ -77,6 +77,7 @@ export class EditQuizPageComponent implements OnInit {
         questions.sort(function (a, b) {
           return a.position as number - (b.position as number);
         })
+        this.buttonSaveQuestionOrderClick()
       });
   }
 
@@ -90,7 +91,6 @@ export class EditQuizPageComponent implements OnInit {
   drop(event: CdkDragDrop<Question[]>) {
     moveItemInArray(this.questions!, event.previousIndex, event.currentIndex);
     this.orderChanged = true;
-    console.log(`order changed`)
   }
 
   buttonSaveQuestionOrderClick(){

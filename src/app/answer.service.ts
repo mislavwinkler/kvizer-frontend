@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { Question } from './question';
 import { Answer } from './answer';
+import { User } from './user';
 
 @Injectable({
   providedIn: 'root'
@@ -29,12 +30,29 @@ export class AnswerService {
       );
     }
 
+  getUsernamesWithAnswersByQuizCode(quizCode: String): Observable<User[]> {
+    const url = `${this.answerUrl}/quiz=${quizCode}`;
+    return this.http.get<User[]>(url)
+      .pipe(
+        tap(_ => console.log(`fetched users w/ quizCode=${quizCode}`)),
+        catchError(this.handleError<User[]>('getUsernamesWithAnswersByQuizCode'))
+      );
+    }
+
   getAnswersByQuestionId(id: Number): Observable<Answer[]> {
     const url = `${this.answerUrl}/${id}`;
     return this.http.get<Answer[]>(url)
       .pipe(
         tap(_ => console.log(`fetched answers for question w/ id=${id}`)),
         catchError(this.handleError<Answer[]>('getAnswersByQuestionId'))
+      );
+    }
+  getAnswersByUsernameAndQuizCode(quizCode: String, username: String): Observable<Answer[]> {
+    const url = `${this.answerUrl}/${quizCode}/${username}`;
+    return this.http.get<Answer[]>(url)
+      .pipe(
+        tap(_ => console.log(`fetched answers for username=${username} and quizCode=${quizCode}`)),
+        catchError(this.handleError<Answer[]>('getAnswersByUsernameAndQuizCode'))
       );
     }
 

@@ -9,6 +9,8 @@ import { EditQuizPageComponent } from './edit-quiz-page/edit-quiz-page.component
 import {NewQuizPageComponent} from "./new-quiz-page/new-quiz-page.component";
 import {AccountPageComponent} from "./account-page/account-page.component";
 import {QuestionPageComponent } from './question-page/question-page.component';
+import { AnswerPageComponent } from './answer-page/answer-page.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 import {ForbiddenPageComponent} from "./forbidden-page/forbidden-page.component";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {AdminAuthorityGuard} from "./security/admin-authority.guard";
@@ -48,6 +50,11 @@ const routes: Routes = [
     canActivate: [LoggedInGuard]
   },
   {
+    path: 'answers/:quizCode',
+    component: AnswerPageComponent,
+    canActivate: [LoggedInGuard]
+  },
+  {
     path: 'account',
     component: AccountPageComponent,
     canActivate: [LoggedInGuard]
@@ -57,11 +64,11 @@ const routes: Routes = [
     component: NewQuizPageComponent,
     canActivate: [LoggedInGuard]
   },
-  /*{
-    path: 'new-quiz',
-    component: QuizNewComponent,
+  {
+    path: 'admin',
+    component: AdminPageComponent,
     canActivate: [AdminAuthorityGuard]
-  },*/
+  },
   {
     path: 'forbidden',
     component: ForbiddenPageComponent

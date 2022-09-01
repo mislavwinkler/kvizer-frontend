@@ -1,0 +1,11 @@
+.answer-page-content-container {
+    display: flex;
+    padding: 2rem;
+    align-self: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 90%;
+}
+td{
+    padding: 1rem;
+}

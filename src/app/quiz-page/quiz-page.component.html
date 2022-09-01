@@ -1,4 +1,4 @@
-<div class="quiz-page-content-container" *ngIf=" quizStarted == false" >
+<div class="quiz-page-content-container" *ngIf=" quizStarted == false && quiz != undefined" >
   <h1 class="heading">{{quiz.name}}</h1>
   <p>code: {{code}}</p>
   <p>created at: {{quiz.creationDate}}</p>
@@ -6,10 +6,13 @@
 
   <div *ngIf="userIsMakerOfThisQuiz && quizStarted == false" >
     <button (click)="buttonStartQuizClick()"
-      class="black-button" type="submit">Start quiz
+      class="black-button" type="button">Start quiz
     </button>
     <button (click)="buttonEditQuizClick()"
-      class="white-button" type="submit">Edit quiz
+      class="white-button" type="button">Edit quiz
+    </button>
+    <button (click)="buttonAnswersClick()"
+      class="white-button" type="button">See answers
     </button>
   </div>
   <div *ngIf="userIsMakerOfThisQuiz == false && quizStarted == false" >

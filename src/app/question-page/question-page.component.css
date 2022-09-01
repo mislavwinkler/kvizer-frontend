@@ -53,6 +53,23 @@
     border-width: 3px;
     margin: 1px;
   }
+  .delete-button {
+    color: var(--color-accent);
+    padding-top: 1rem;
+    border-color: var(--color-accent);
+    border-width: 1px;
+    padding-left: 2rem;
+    border-radius: 50px;
+    padding-right: 2rem;
+    padding-bottom: 1rem;
+    background-color: var(--color-primary);
+    margin: 3px;
+  }
+  .delete-button:hover {
+    border-width: 3px;
+    margin: 1px;
+    border-color: var(--color-warning);
+  }
 
 @media(max-width: 991px) {
     .question-page-content-container {

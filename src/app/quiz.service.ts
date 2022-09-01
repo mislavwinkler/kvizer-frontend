@@ -28,11 +28,31 @@ export class QuizService {
       );
     }
 
+  getQuizesByUsername(username: String): Observable<Quiz[]> {
+    const url = `${this.quizUrl}/maker=${username}`;
+    return this.http.get<Quiz[]>(url)
+      .pipe(
+        tap(_ => console.log(`fetched quizes for username=${username}`)),
+        catchError(this.handleError<Quiz[]>('getQuizesByUsername'))
+      );
+    }
+
   addQuiz(quiz: Quiz): Observable<Quiz> {
     return this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions)
       .pipe(
         tap((newQuiz: Quiz) => console.log(`added quiz w code=${newQuiz.code}`)),
         catchError(this.handleError<Quiz>('addQuiz'))
+      );
+  }
+
+  deleteQuiz(quiz: Quiz | string): Observable<Quiz> {
+    const code = typeof quiz === 'string' ? quiz : quiz.code;
+    const url = `${this.quizUrl}/${code}`;
+
+    return this.http.delete<Quiz>(url, this.httpOptions)
+      .pipe(
+        tap(_ => console.log(`deleted quiz code=${code}`)),
+        catchError(this.handleError<Quiz>('deleteQuiz'))
       );
   }
 

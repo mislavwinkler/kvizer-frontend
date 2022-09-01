@@ -1,0 +1,25 @@
+<div class="answer-page-content-container" *ngIf="userIsMakerOfThisQuiz" >
+    <h1 class="heading">{{quiz.name}}</h1>
+    <div>
+        <button *ngFor="let user of users" (click)="curUser = user.username; getAnswers()"
+        >{{user.username}}</button>
+      </div>
+      <p>Trenutno odabrano: {{curUser}}</p>
+
+    <div *ngIf="curUser != undefined && answers != undefined" >
+        <table>
+            <tr>
+            <th>#</th>
+            <th>Question</th>
+            <th>Correct Answer</th>
+            <th>Given Answer</th>
+            </tr>
+            <tr *ngFor="let question of questions ; index as i;">
+                <td>{{question.position}}</td>
+                <td>{{question.question}}</td>
+                <td>{{question.answer}}</td>
+                <td>{{answers[i].answer}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

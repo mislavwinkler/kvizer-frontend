@@ -55,4 +55,17 @@ export class QuestionPageComponent implements OnInit {
       })
   }
 
+  delete(): void {
+    this.questionService.deleteQuestion(this.question).subscribe(
+      {
+        next: () => {
+          this.location.back()
+        },
+        error: () => {
+          this.error = true;
+          this.updating = false;
+        }
+      })
+  }
+
 }

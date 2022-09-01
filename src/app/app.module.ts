@@ -23,6 +23,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { QuestionPageComponent } from './question-page/question-page.component';
 import { EditQuizPageComponent } from './edit-quiz-page/edit-quiz-page.component';
+import { AnswerPageComponent } from './answer-page/answer-page.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { EditQuizPageComponent } from './edit-quiz-page/edit-quiz-page.component
     NewQuizPageComponent,
     AccountPageComponent,
     QuestionPageComponent,
-    EditQuizPageComponent
+    EditQuizPageComponent,
+    AnswerPageComponent,
+    AdminPageComponent
   ],
   imports: [
     BrowserModule,

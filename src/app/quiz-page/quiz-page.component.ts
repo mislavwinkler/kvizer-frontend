@@ -22,7 +22,7 @@ export class QuizPageComponent implements OnInit {
   currentQuestionPosition: number = 0;
   answers!: String[] ;
   public userIsMakerOfThisQuiz : boolean = false
-  public quiz: Quiz = new Quiz('', '', new Date(''), ''); 
+  public quiz!: Quiz; 
   public error = false;
   public quizError = false;
   public answersError = false;
@@ -92,6 +92,10 @@ export class QuizPageComponent implements OnInit {
     this.closeFullscreen();
     this.quizStarted = false;
   }
+  buttonAnswersClick(){
+    this.router.navigateByUrl("/answers/"+ this.code);
+  }
+
   buttonNextQuestionClick(){
     this.currentQuestionPosition = this.currentQuestionPosition + 1    
   }

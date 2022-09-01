@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Quiz } from '../quiz';
+import { QuizService } from '../quiz.service';
+import { AuthenticationService } from '../security/authentication.service';
 
 @Component({
   selector: 'app-account-page',
@@ -7,9 +10,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountPageComponent implements OnInit {
 
-  constructor() { }
+  public quizes!: Quiz[];
+
+  public error = false;
+
+  constructor(
+    private authenticationService: AuthenticationService,
+    private quizService: QuizService,
+  ) { }
 
   ngOnInit(): void {
+    this.quizService.getQuizesByUsername(this.authenticationService.getAuthenticatedUserUsername() as String)
+      .subscribe(
+        {
+          next: (quizes) => {
+            if(quizes != undefined){
+            this.quizes= quizes
+            }
+            else {this.error = true;}
+          },
+          error: () => {
+            this.error = true;
+          }
+        }
+      )
   }
-
+  delete(quiz: Quiz): void {
+    this.quizService.deleteQuiz(quiz).subscribe(
+      () => this.quizes = this.quizes?.filter(q => q !== quiz)
+    );
+  }
 }
