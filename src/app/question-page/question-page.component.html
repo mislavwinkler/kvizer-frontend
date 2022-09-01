@@ -10,12 +10,19 @@
             class="question-page-textinput input" name="answer"
         placeholder="question" type="text"
         ></textarea>
+        <input
+        style="display: none"
+        type="file"  accept="image/*" (change)="onFileChanged($event)"
+        #fileInput>
+        <button class="white-button" (click)="fileInput.click()">Select image</button>
+        <div *ngIf="fileInput.value && !notImageError">Image selected</div>
+        <div class="text-danger" *ngIf="notImageError">File must be an image</div>
         <div class="question-page-button-container">
-        <button (click)="buttonUpdateClick()" [disabled]="updating"
-            class="update-button" type="submit">Update question
+        <button (click)="buttonUpdateClick()" [disabled]="updating || notImageError || question.question.length == 0 || question.answer.length == 0"
+            class="black-button" type="submit">Update question
         </button>
         <button (click)="location.back()" [disabled]="updating"
-            class="back-button" type="button">Go back without saving
+            class="white-button" type="button">Go back without saving
         </button>
         <button (click)="delete()" [disabled]="updating"
             class="delete-button" type="button">Delete question

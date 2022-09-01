@@ -17,13 +17,15 @@ import {Location} from '@angular/common';
 export class EditQuizPageComponent implements OnInit {
 
   public code : String = ''
-  questions?: Question[]
+  public questions?: Question[]
   public userIsMakerOfThisQuiz : boolean = false 
   public quiz: Quiz = new Quiz('', '', new Date(''), ''); 
   public newQuestion: Question = new Question(0, 0, '', '', '', '')
   public error = false
   public quizError = false
   public orderChanged = false
+  public selectedImage!: File
+  public notImageError = false;
 
   constructor(
     private questionService: QuestionService,
@@ -55,13 +57,24 @@ export class EditQuizPageComponent implements OnInit {
     )
   }
 
+  onFileChanged(event: any) {
+    this.notImageError = false;
+    this.selectedImage = event.target.files[0]
+    if(this.selectedImage.type.indexOf("image")){
+      this.notImageError = true;
+    }
+  }
+
   buttonSubmitQuestionClick(){
     this.newQuestion.position = this.questions!.length + 1
     this.newQuestion.quizCode = this.code
-    //insert image handling
     this.questionService.addQuestions(this.newQuestion)
       .subscribe({
-        next: () => {
+        next: (question) => {
+          console.log(question)
+          if(this.selectedImage){
+            this.questionService.uploadPicture(this.selectedImage, question.id)
+          }
           this.reloadCurrentRoute();
         },
         error: () => {

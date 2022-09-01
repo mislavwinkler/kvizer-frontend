@@ -12,9 +12,11 @@ import {Location} from '@angular/common';
 export class QuestionPageComponent implements OnInit {
   public questionId : Number = 0;
   public question: Question = new Question(0, 0, '', '', '', '');
+  public notImageError = false;
   public error = false;
   public questionError = false;
   updating = false;
+  selectedImage!: File
 
   constructor(
     private questionService: QuestionService,
@@ -37,6 +39,16 @@ export class QuestionPageComponent implements OnInit {
         }
       }
     )
+  }
+
+  onFileChanged(event: any) {
+    this.selectedImage = event.target.files[0]
+    if(this.selectedImage.type.indexOf("image")){
+      this.notImageError = true;
+    }
+    else{
+      this.notImageError = false;
+    }
   }
 
   buttonUpdateClick(){

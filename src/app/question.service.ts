@@ -40,7 +40,7 @@ export class QuestionService {
   addQuestions(question: Question): Observable<Question> {
     return this.http.post<Question>(this.questionUrl, question, this.httpOptions)
       .pipe(
-        tap((newQuestion: Question) => console.log(`added question w id=${newQuestion.id}`)),
+        tap((newQuestion: Question) => console.log(`added question`)),
         catchError(this.handleError<Question>('addQuestion'))
       );
   }
@@ -64,6 +64,15 @@ export class QuestionService {
         tap(_ => console.log(`deleted question id=${id}`)),
         catchError(this.handleError<Question>('deleteQuestion'))
       );
+  }
+
+  uploadPicture(file: File, questionId: Number) {
+    console.log(`uploading picture for question ${questionId}`)
+    const url = `${this.questionUrl}/upload/${questionId}`;
+    const uploadData = new FormData();
+    uploadData.append('file', file);
+    this.http.post(url, uploadData)
+    .subscribe();
   }
 
     private handleError<T>(operation = 'operation', result?: T) {
