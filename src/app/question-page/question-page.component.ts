@@ -11,7 +11,7 @@ import {Location} from '@angular/common';
 })
 export class QuestionPageComponent implements OnInit {
   public questionId : Number = 0;
-  public question: Question = new Question(0, 0, '', '', '', '');
+  public question: Question = new Question(0, 0, '', '', '');
   public notImageError = false;
   public fileSizeError = false;
   public error = false;
@@ -31,7 +31,7 @@ export class QuestionPageComponent implements OnInit {
       {
         next: (question) => {
           if(question != undefined){
-            this.question = new Question(question.id, question.position, question.question, question.answer, question.imgPath, question.quizCode)
+            this.question = new Question(question.id, question.position, question.question, question.answer, question.quizCode)
             }
             else {this.questionError = true;}
         },

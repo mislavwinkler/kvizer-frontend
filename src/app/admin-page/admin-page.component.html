@@ -14,7 +14,7 @@
                 <td>{{quiz.makerName}}</td>
                 <td>{{quiz.creationDate}}</td>
                 <td>
-                <button class="delete" title="delete quiz"
+                <button class="small-red-button" title="delete quiz"
                 (click)="deleteQuiz(quiz)">Delete
                 </button>
                 </td>
@@ -31,7 +31,7 @@
             <tr *ngFor="let user of users ;">
                 <td>{{user.username}}</td>
                 <td>
-                    <button class="delete" title="delete quiz"
+                    <button class="small-red-button" title="delete quiz"
                     (click)="deleteUser(user)">Delete
                     </button>
                     </td>
@@ -39,4 +39,4 @@
         </table>
     </div>
 </div>
-<div class="text-danger mt-2" *ngIf="error">An error ocured, please try again</div>
+<div class="text-error" *ngIf="error">An error ocured, please try again</div>

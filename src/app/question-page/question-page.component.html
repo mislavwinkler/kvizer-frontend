@@ -16,7 +16,7 @@
         #fileInput>
         <button class="white-button" (click)="fileInput.click()">Select image</button>
         <div *ngIf="fileInput.value && !notImageError">Image selected</div>
-        <div class="text-danger" *ngIf="notImageError">File must be an image</div>
+        <div class="text-error" *ngIf="notImageError">File must be an image</div>
         <div class="question-page-button-container">
         <button (click)="buttonUpdateClick()" [disabled]="updating || notImageError || question.question.length == 0 || question.answer.length == 0"
             class="black-button" type="submit">Update question
@@ -25,12 +25,12 @@
             class="white-button" type="button">Go back without saving
         </button>
         <button (click)="delete()" [disabled]="updating"
-            class="delete-button" type="button">Delete question
+            class="red-button" type="button">Delete question
         </button>
         </div>
         <div class="text-error" *ngIf="error">There was an error attempting to update question, please try again.</div>
     </form>
 
-    <div class="text-danger mt-2" *ngIf="error">An error ocured, please try again</div>
-    <div class="text-danger mt-2" *ngIf="questionError">question with that ID does not exist</div>
+    <div class="text-error" *ngIf="error">An error ocured, please try again</div>
+    <div class="text-error" *ngIf="questionError">question with that ID does not exist</div>
 </div>

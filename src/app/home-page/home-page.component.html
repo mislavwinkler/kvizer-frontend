@@ -12,7 +12,7 @@
         Join
       </button>
     </form>
-    <div class="text-danger mt-2" *ngIf="joinError">There was an error attempting to join, please check quiz code and try again.</div>
-    <div class="text-danger mt-2" *ngIf="codeError">Quiz code must have 6 characters</div>
-    <div class="text-danger mt-2" *ngIf="noQuizError">Quiz with that code does not exist</div>
+    <div class="text-error" *ngIf="joinError">There was an error attempting to join, please check quiz code and try again.</div>
+    <div class="text-error" *ngIf="codeError">Quiz code must have 6 characters</div>
+    <div class="text-error" *ngIf="noQuizError">Quiz with that code does not exist</div>
   </div>

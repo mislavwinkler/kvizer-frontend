@@ -5,8 +5,8 @@
       <a routerLink="/quiz/{{quiz.code}}">
         <span class="badge">{{quiz.name}} -- {{quiz.code}} | Created at: {{quiz.creationDate}} </span>
       </a>
-      <button class="delete" title="delete quiz"
-              (click)="delete(quiz)">x
+      <button class="small-red-button" title="delete quiz"
+              (click)="delete(quiz)">Delete
       </button>
     </li>
   </ul>

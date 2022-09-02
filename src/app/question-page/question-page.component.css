@@ -21,23 +21,6 @@
     align-items: center;
     flex-direction: row;
   }
-  .delete-button {
-    color: var(--color-accent);
-    padding-top: 1rem;
-    border-color: var(--color-accent);
-    border-width: 1px;
-    padding-left: 2rem;
-    border-radius: 50px;
-    padding-right: 2rem;
-    padding-bottom: 1rem;
-    background-color: var(--color-primary);
-    margin: 3px;
-  }
-  .delete-button:hover {
-    border-width: 3px;
-    margin: 1px;
-    border-color: var(--color-warning);
-  }
 
 @media(max-width: 991px) {
     .question-page-content-container {
@@ -48,9 +31,8 @@
     .question-page-form {
       width: 100%;
     }
-  }
-@media(max-width: 479px) {
-    .question-page-form {
-      width: 100%;
+    .question-page-button-container {
+      align-items: center;
+      flex-direction: column;
     }
   }

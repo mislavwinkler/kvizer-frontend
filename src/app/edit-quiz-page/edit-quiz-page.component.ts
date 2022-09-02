@@ -20,7 +20,7 @@ export class EditQuizPageComponent implements OnInit {
   public questions?: Question[]
   public userIsMakerOfThisQuiz : boolean = false 
   public quiz: Quiz = new Quiz('', '', new Date(''), ''); 
-  public newQuestion: Question = new Question(0, 0, '', '', '', '')
+  public newQuestion: Question = new Question(0, 0, '', '', '')
   public error = false
   public quizError = false
   public orderChanged = false
@@ -114,7 +114,7 @@ export class EditQuizPageComponent implements OnInit {
     for(let i=0; i < this.questions!.length; i++){
       if (this.questions![i].position != i+1){
           this.questionService.updateQuestion(
-            new Question(this.questions![i].id, i+1, this.questions![i].question, this.questions![i].answer, this.questions![i].imgPath ?? '', this.code))
+            new Question(this.questions![i].id, i+1, this.questions![i].question, this.questions![i].answer, this.code))
             .subscribe({
               next: () => {
                 this.reloadCurrentRoute();
