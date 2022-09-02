@@ -42,12 +42,10 @@ export class QuestionPageComponent implements OnInit {
   }
 
   onFileChanged(event: any) {
+    this.notImageError = false;
     this.selectedImage = event.target.files[0]
     if(this.selectedImage.type.indexOf("image")){
       this.notImageError = true;
-    }
-    else{
-      this.notImageError = false;
     }
   }
 
@@ -57,7 +55,10 @@ export class QuestionPageComponent implements OnInit {
 
     this.questionService.updateQuestion(this.question).subscribe(
       {
-        next: () => {
+        next: (question) => {
+          if(this.selectedImage){
+            this.questionService.uploadPicture(this.selectedImage, question.id).subscribe()
+          }
           this.location.back()
         },
         error: () => {

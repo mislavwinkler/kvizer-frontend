@@ -1,6 +1,11 @@
+.edit-quiz-page-container {
+  width: 90%;
+  overflow: auto;
+  padding: 2rem;
+}
+
 .question-list {
-    margin-left: 2rem;
-    width: 60%;
+    width: 80%;
     max-width: 100%;
     border: solid 1px #ccc;
     min-height: 60px;
@@ -29,8 +34,7 @@
   }
   
   .edit-quiz-page-button-container {
-    margin-left: 2rem;
-    width: 60%;
+    width: 80%;
     display: flex;
     padding: 0.5rem;
     align-items: center;
@@ -64,7 +68,7 @@
   }
   
   .edit-quiz-page-form {
-    padding: 2rem;
+    padding-bottom: 2rem;
     display: flex;
     overflow: auto;
     align-items: center;
@@ -79,3 +83,19 @@
     flex-direction: column;
     justify-content: flex-start;
   }
+
+  @media(max-width: 991px) {
+    .edit-quiz-page-form {
+      padding: 2rem;
+      display: flex;
+      overflow: auto;
+      align-items: flex-start;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .question-list {
+      margin: auto;
+      width: 90%;
+    }
+  }
+  

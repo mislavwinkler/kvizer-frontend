@@ -71,9 +71,8 @@ export class EditQuizPageComponent implements OnInit {
     this.questionService.addQuestions(this.newQuestion)
       .subscribe({
         next: (question) => {
-          console.log(question)
           if(this.selectedImage){
-            this.questionService.uploadPicture(this.selectedImage, question.id)
+            this.questionService.uploadPicture(this.selectedImage, question.id).subscribe()
           }
           this.reloadCurrentRoute();
         },

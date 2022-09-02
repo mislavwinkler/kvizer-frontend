@@ -19,6 +19,7 @@ export class RegistrationPageComponent {
   emailError = false;
   usernameError = false;
   passwordError = false;
+  passwordLengthError = false;
   inputError = false;
   
 
@@ -49,6 +50,7 @@ export class RegistrationPageComponent {
     this.emailError = false;
     this.usernameError = false;
     this.passwordError = false;
+    this.passwordLengthError = false;
     this.registering = true;
 
     if (email.length == 0 || username.length == 0 || password.length == 0 || passwordConfirm.length == 0){
@@ -58,13 +60,19 @@ export class RegistrationPageComponent {
 
     else if  (!(new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(email)))
     {
-      this.emailError = true
+      this.emailError = true;
+      this.registering = false;
+    }
+
+    else if (password.length < 6)
+    {
+      this.passwordLengthError = true;
       this.registering = false;
     }
 
     else if (password != passwordConfirm)
     {
-      this.passwordError = true
+      this.passwordError = true;
       this.registering = false;
     }
     else{

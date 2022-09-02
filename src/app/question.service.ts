@@ -40,7 +40,7 @@ export class QuestionService {
   addQuestions(question: Question): Observable<Question> {
     return this.http.post<Question>(this.questionUrl, question, this.httpOptions)
       .pipe(
-        tap((newQuestion: Question) => console.log(`added question`)),
+        tap(() => console.log(`added question`)),
         catchError(this.handleError<Question>('addQuestion'))
       );
   }
@@ -71,8 +71,11 @@ export class QuestionService {
     const url = `${this.questionUrl}/upload/${questionId}`;
     const uploadData = new FormData();
     uploadData.append('file', file);
-    this.http.post(url, uploadData)
-    .subscribe();
+    return this.http.post(url, uploadData, {responseType: 'text'})
+    .pipe(
+      tap(),
+      catchError(this.handleError<File>('uploadPicture'))
+    );
   }
 
     private handleError<T>(operation = 'operation', result?: T) {

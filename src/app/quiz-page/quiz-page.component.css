@@ -4,16 +4,27 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 .question-container{
   display: flex;
   align-self: center;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   min-height: 60vh;
   width: 100%;
-  margin-top: 4rem;
+  margin-top: 2rem;
+}
+
+.quiz-container{
+  display: flex;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 80vh;
+  width: 100%;
 }
 
 .question-list {

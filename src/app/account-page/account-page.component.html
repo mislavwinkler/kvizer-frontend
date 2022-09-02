@@ -1,11 +1,13 @@
-<h1>My quizes:</h1>
-<ul *ngIf="quizes != undefined" class="quizes">
-  <li *ngFor="let quiz of quizes">
-    <a routerLink="/quiz/{{quiz.code}}">
-      <span class="badge">{{quiz.name}} -- {{quiz.code}} | Created at: {{quiz.creationDate}} </span>
-    </a>
-    <button class="delete" title="delete quiz"
-            (click)="delete(quiz)">x
-    </button>
-  </li>
-</ul>
+<div class="account-page-content-container">
+  <h1>My quizes:</h1>
+  <ul *ngIf="quizes != undefined" class="quizes">
+    <li *ngFor="let quiz of quizes">
+      <a routerLink="/quiz/{{quiz.code}}">
+        <span class="badge">{{quiz.name}} -- {{quiz.code}} | Created at: {{quiz.creationDate}} </span>
+      </a>
+      <button class="delete" title="delete quiz"
+              (click)="delete(quiz)">x
+      </button>
+    </li>
+  </ul>
+</div>

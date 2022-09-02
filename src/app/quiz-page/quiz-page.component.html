@@ -1,24 +1,26 @@
 <div class="quiz-page-content-container" *ngIf=" quizStarted == false && quiz != undefined" >
-  <h1 class="heading">{{quiz.name}}</h1>
-  <p>code: {{code}}</p>
-  <p>created at: {{quiz.creationDate}}</p>
-  <p>maker: {{quiz.makerName}}</p>
+  <div class="quiz-container">
+    <h1 class="heading">{{quiz.name}}</h1>
+    <h3>code: {{code}}</h3>
+    <h3>created at: {{quiz.creationDate}}</h3>
+    <h3>maker: {{quiz.makerName}}</h3>
 
-  <div *ngIf="userIsMakerOfThisQuiz && quizStarted == false" >
-    <button (click)="buttonStartQuizClick()"
-      class="black-button" type="button">Start quiz
-    </button>
-    <button (click)="buttonEditQuizClick()"
-      class="white-button" type="button">Edit quiz
-    </button>
-    <button (click)="buttonAnswersClick()"
-      class="white-button" type="button">See answers
-    </button>
-  </div>
-  <div *ngIf="userIsMakerOfThisQuiz == false && quizStarted == false" >
-    <button (click)="buttonStartQuizClick()"
-      class="black-button" type="submit">Join quiz
-    </button>
+    <div *ngIf="userIsMakerOfThisQuiz && quizStarted == false" >
+      <button (click)="buttonStartQuizClick()"
+        class="black-button" type="button">Start quiz
+      </button>
+      <button (click)="buttonEditQuizClick()"
+        class="white-button" type="button">Edit quiz
+      </button>
+      <button (click)="buttonAnswersClick()"
+        class="white-button" type="button">See answers
+      </button>
+    </div>
+    <div *ngIf="userIsMakerOfThisQuiz == false && quizStarted == false" >
+      <button (click)="buttonStartQuizClick()"
+        class="black-button" type="submit">Join quiz
+      </button>
+    </div>
   </div>
 </div>
 
@@ -29,15 +31,17 @@
   <div class="question-container" >
     <h1 class="heading"> {{questions[currentQuestionPosition].position}}. 
       - {{questions[currentQuestionPosition].question}}</h1>
-      <img src="http://localhost:8080/question-photos/{{questions[currentQuestionPosition].id}}">
+      <img #image src="http://localhost:8080/question-photos/{{questions[currentQuestionPosition].id}}"
+      (error)="image.hidden = true" [hidden]="image.hidden"
+        style="max-height: 50vh;">
   </div>
 
   <div>
-    <button (click)="buttonPreviousQuestionClick()"
+    <button (click)="buttonPreviousQuestionClick(); image.hidden = false"
       [disabled]="currentQuestionPosition == 0"
       class="black-button" type="submit">Previous
     </button>
-    <button (click)="buttonNextQuestionClick()"
+    <button (click)="buttonNextQuestionClick(); image.hidden = false"
       [disabled]="currentQuestionPosition == questions.length - 1"
       class="black-button" type="submit">Next
     </button>
