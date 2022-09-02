@@ -1,0 +1,23 @@
+.admin-page-container {
+    display: flex;
+    align-self: center;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: center;
+    width: 90%;
+    padding: 2rem;
+  }
+.quiz-container{
+    padding: 3rem;
+    width: 70%;
+}
+.users-container{
+    padding: 3rem;
+    width: 30%;
+}
+.quiz-table{
+    width: 90%;
+}
+.user-table{
+    width: 90%;
+}

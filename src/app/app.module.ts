@@ -25,6 +25,7 @@ import { QuestionPageComponent } from './question-page/question-page.component';
 import { EditQuizPageComponent } from './edit-quiz-page/edit-quiz-page.component';
 import { AnswerPageComponent } from './answer-page/answer-page.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
     MatIconModule,
     FlexLayoutModule,
     MatSnackBarModule,
-    DragDropModule
+    DragDropModule,
+    MatRadioModule
   ],
   providers: [
     {

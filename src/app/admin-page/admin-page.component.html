@@ -1,32 +1,42 @@
-<div *ngIf="quizes != undefined" >
-    <h1>All quizes</h1>
-    <table>
-        <tr>
-        <th>Code</th>
-        <th>Name</th>
-        <th>Maker</th>
-        <th>Creation date</th>
-        </tr>
-        <tr *ngFor="let quiz of quizes ;">
-            <td>{{quiz.code}}</td>
-            <td>{{quiz.name}}</td>
-            <td>{{quiz.makerName}}</td>
-            <td>{{quiz.creationDate}}</td>
-        </tr>
-    </table>
+<div class="admin-page-container">
+    <div class="quiz-container" *ngIf="quizes != undefined" >
+        <h1>All quizes</h1>
+        <table class="quiz-table">
+            <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Maker</th>
+            <th>Creation date</th>
+            </tr>
+            <tr *ngFor="let quiz of quizes ;">
+                <td>{{quiz.code}}</td>
+                <td>{{quiz.name}}</td>
+                <td>{{quiz.makerName}}</td>
+                <td>{{quiz.creationDate}}</td>
+                <td>
+                <button class="delete" title="delete quiz"
+                (click)="deleteQuiz(quiz)">Delete
+                </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="users-container" *ngIf="users != undefined" >
+        <h1>All users</h1>
+        <table class="user-table">
+            <tr>
+            <th>Username</th>
+            </tr>
+            <tr *ngFor="let user of users ;">
+                <td>{{user.username}}</td>
+                <td>
+                    <button class="delete" title="delete quiz"
+                    (click)="deleteUser(user)">Delete
+                    </button>
+                    </td>
+            </tr>
+        </table>
+    </div>
 </div>
-
-<div *ngIf="users != undefined" >
-    <h1>All users</h1>
-    <table>
-        <tr>
-        <th>Username</th>
-        </tr>
-        <tr *ngFor="let user of users ;">
-            <td>{{user.username}}</td>
-        </tr>
-    </table>
-</div>
-
-
 <div class="text-danger mt-2" *ngIf="error">An error ocured, please try again</div>

@@ -18,7 +18,8 @@
                 <td>{{question.position}}</td>
                 <td>{{question.question}}</td>
                 <td>{{question.answer}}</td>
-                <td>{{answers[i].answer}}</td>
+                <td [ngStyle]="{'color': (question.answer == answers[i].answer) ? 'green' : 'red'}">
+                    {{answers[i].answer}}</td>
             </tr>
         </table>
     </div>

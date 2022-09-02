@@ -26,6 +26,7 @@ export class EditQuizPageComponent implements OnInit {
   public orderChanged = false
   public selectedImage!: File
   public notImageError = false;
+  public fileSizeError = false;
 
   constructor(
     private questionService: QuestionService,
@@ -59,9 +60,13 @@ export class EditQuizPageComponent implements OnInit {
 
   onFileChanged(event: any) {
     this.notImageError = false;
+    this.fileSizeError = false;
     this.selectedImage = event.target.files[0]
     if(this.selectedImage.type.indexOf("image")){
       this.notImageError = true;
+    }
+    else if(this.selectedImage.size > 4194304){
+      this.fileSizeError = true;
     }
   }
 

@@ -23,6 +23,7 @@
       <button class="white-button" (click)="fileInput.click()">Select image</button>
       <div *ngIf="fileInput.value && !notImageError">Image selected</div>
       <div class="text-danger" *ngIf="notImageError">File must be an image</div>
+      <div class="text-danger" style="color: red;" *ngIf="fileSizeError">File is to large</div>
     </div>
     <button (click)="buttonSubmitQuestionClick()" [disabled]="newQuestion.question == '' || newQuestion.answer == ''"
       class="black-button" type="submit">Submit new question

@@ -18,14 +18,14 @@ export class AdminPageComponent implements OnInit {
 
   public quizes!: Quiz[]
   public users!: User[]
-
   public error = false;
 
   constructor(
     private userService: UserService,
     private quizService: QuizService,
     private questionService: QuestionService,
-    private answerService: AnswerService
+    private answerService: AnswerService,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit(): void {
@@ -48,7 +48,7 @@ export class AdminPageComponent implements OnInit {
       {
         next: (users) => {
           if(users != undefined){
-          this.users= users
+          this.users= users.filter(u => u.username != this.authenticationService.getAuthenticatedUserUsername())
           }
           else {this.error = true;}
         },
@@ -57,6 +57,18 @@ export class AdminPageComponent implements OnInit {
         }
       }
     )
+  }
+
+  deleteQuiz(quiz: Quiz): void {
+    this.quizService.deleteQuiz(quiz).subscribe(
+      () => this.quizes = this.quizes?.filter(q => q !== quiz)
+    );
+  }
+
+  deleteUser(user: User): void {
+    this.userService.deleteUser(user).subscribe(
+      () => this.users = this.users?.filter(u => u !== user)
+    );
   }
 
 }

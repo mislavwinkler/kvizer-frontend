@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
-import { Quiz } from './quiz';
 import { User } from './user';
 
 @Injectable({
@@ -28,6 +27,17 @@ export class UserService {
         catchError(this.handleError<User[]>('getAllUsers'))
       );
     }
+
+  deleteUser(user: User | string): Observable<User> {
+    const username = typeof user === 'string' ? user : user.username;
+    const url = `${this.userUrl}/${username}`;
+
+    return this.http.delete<User>(url, this.httpOptions)
+      .pipe(
+        tap(_ => console.log(`deleted user username=${username}`)),
+        catchError(this.handleError<User>('deleteUser'))
+      );
+  }
 
     private handleError<T>(operation = 'operation', result?: T) {
       return (error: any): Observable<T> => {
