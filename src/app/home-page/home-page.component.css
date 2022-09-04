@@ -17,15 +17,19 @@
 .home-page-content-container {
     align-self: center;
     align-items: center;
-    width: 70%;
+    justify-content: center;
+    width: 100%;
+    padding: 0rem;
     }
-
+.home-page-textinput {
+    width: 100%;
 }
-@media(max-width: 479px) {
-    .home-page-content-container {
-        align-self: center;
-        align-items: center;
-        width: 100%;
-        padding: 0;
-    }
+.home-page-form{
+    max-width: 80%;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
 }

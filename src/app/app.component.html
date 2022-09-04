@@ -1,7 +1,6 @@
 <app-navbar *ngIf="authenticationService.isUserAuthenticated()"></app-navbar>
-
 <div [ngStyle]="{'padding-top':authenticationService.isUserAuthenticated() ? '80px;' : '0px'}">
-  <div class="m-5">
+  <div>
     <router-outlet></router-outlet>
   </div>
 </div>

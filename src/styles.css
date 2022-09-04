@@ -115,3 +115,13 @@ a:active {
   border-width: 2px;
   margin: 1px;
 }
+
+.input {
+  color: black;
+  cursor: auto;
+  padding: 0.5rem 1rem;
+  border-color: black;
+  border-width: 1px;
+  border-radius: 4px;
+  background-color: white;
+}

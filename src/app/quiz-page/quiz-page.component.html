@@ -5,7 +5,7 @@
     <h3>created at: {{quiz.creationDate}}</h3>
     <h3>maker: {{quiz.makerName}}</h3>
 
-    <div *ngIf="userIsMakerOfThisQuiz && quizStarted == false" >
+    <div *ngIf="(userIsMakerOfThisQuiz || authenticationService.isUserAdmin())&& quizStarted == false" >
       <button (click)="buttonStartQuizClick()"
         class="black-button" type="button">Start quiz
       </button>

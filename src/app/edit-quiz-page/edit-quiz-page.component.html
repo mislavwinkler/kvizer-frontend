@@ -1,4 +1,4 @@
-<div class="edit-quiz-page-container" *ngIf="userIsMakerOfThisQuiz">
+<div class="edit-quiz-page-container" *ngIf="userIsMakerOfThisQuiz || authenticationService.isUserAdmin()">
   <h3>{{quiz.name}} | code: {{code}} | created at: {{quiz.creationDate}} | maker: {{quiz.makerName}}</h3>
   <form #authenticationForm="ngForm" class="edit-quiz-page-form" name="authenticationForm">
     <div class="edit-quiz-page-input-container">

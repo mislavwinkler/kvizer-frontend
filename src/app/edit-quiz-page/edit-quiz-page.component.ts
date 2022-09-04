@@ -31,7 +31,7 @@ export class EditQuizPageComponent implements OnInit {
   constructor(
     private questionService: QuestionService,
     private quizService: QuizService,
-    private authenticationService: AuthenticationService,
+    public authenticationService: AuthenticationService,
     private router: Router,
     private activatedroute : ActivatedRoute,
     public location: Location

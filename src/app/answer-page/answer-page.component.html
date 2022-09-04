@@ -1,4 +1,4 @@
-<div class="answer-page-content-container" *ngIf="userIsMakerOfThisQuiz" >
+<div class="answer-page-content-container" *ngIf="userIsMakerOfThisQuiz || authenticationService.isUserAdmin()" >
     <h1 class="heading">{{quiz.name}}</h1>
     <div>
         <button class="white-button" *ngFor="let user of users" (click)="curUser = user.username; getAnswers()"

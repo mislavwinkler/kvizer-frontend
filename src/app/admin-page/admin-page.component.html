@@ -8,7 +8,7 @@
             <th>Maker</th>
             <th>Creation date</th>
             </tr>
-            <tr *ngFor="let quiz of quizes ;">
+            <tr *ngFor="let quiz of quizes ;" routerLink="/quiz/{{quiz.code}}">
                 <td>{{quiz.code}}</td>
                 <td>{{quiz.name}}</td>
                 <td>{{quiz.makerName}}</td>

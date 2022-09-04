@@ -15,7 +15,8 @@
           <a *ngIf="authenticationService.isUserAdmin()" mat-button href="/admin" class="navbartop-btn" ><strong>Admin</strong></a>
           <a mat-button href="/new" class="navbartop-btn new-button" ><strong>New Quiz</strong></a>
           <div class="logout-container">
-            <strong>{{authenticationService.getAuthenticatedUserUsername()}}</strong> <br> <a href="#" (click)="logout()" class="link-primary">Logout</a>
+            <div><strong>{{authenticationService.getAuthenticatedUserUsername()}}</strong></div>
+            <div><a mat-button href="#" (click)="logout()" class="small-button-white">Logout</a></div>
           </div>
       </div>
     </div>
