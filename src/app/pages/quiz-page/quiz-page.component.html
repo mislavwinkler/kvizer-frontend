@@ -1,0 +1,76 @@
+<div class="quiz-page-content-container" *ngIf=" quizStarted == false && quiz != undefined && questions != undefined" >
+  <div class="quiz-container">
+    <h1 class="heading">{{quiz.name}}</h1>
+    <h3>code: <strong>{{code}}</strong></h3>
+    <h3>created at: {{quiz.creationDate}}</h3>
+    <h3>maker: {{quiz.makerName}}</h3>
+
+    <div *ngIf="(userIsMakerOfThisQuiz || authenticationService.isUserAdmin()) && quizStarted == false" >
+      <button *ngIf="userIsMakerOfThisQuiz" (click)="buttonStartQuizClick()" [disabled]="questions.length == 0"
+        class="black-button" type="button">Start quiz
+      </button>
+      <button (click)="buttonEditQuizClick()"
+        class="white-button" type="button">Edit quiz
+      </button>
+      <button (click)="buttonAnswersClick()"
+        class="white-button" type="button">See answers
+      </button>
+    </div>
+    <div *ngIf="userIsMakerOfThisQuiz == false && quizStarted == false" >
+      <button (click)="buttonStartQuizClick()" [disabled]="userAnswerdThisQuiz"
+        class="black-button" type="button">Join quiz
+      </button>
+    </div>
+    <div *ngIf="userAnswerdThisQuiz">You have already submitted answers for this quiz</div>
+    <div *ngIf="questions.length == 0">Quiz does not have any questions</div>
+  </div>
+</div>
+
+<div *ngIf="userIsMakerOfThisQuiz && quizStarted" class="quiz-page-content-container" >
+  
+  <div class="question-container" >
+    <h1 class="heading"> {{questions[currentQuestionPosition].position}}. 
+      - {{questions[currentQuestionPosition].question}}</h1>
+      <img #image src="http://localhost:8080/question-photos/{{questions[currentQuestionPosition].id}}"
+      (error)="image.hidden = true" [hidden]="image.hidden"
+        style="max-height: 50vh;">
+  </div>
+  <div style="margin-top: 2rem;">
+    <button (click)="buttonPreviousQuestionClick(); image.hidden = false"
+      [disabled]="currentQuestionPosition == 0"
+      class="black-button" type="submit">Previous
+    </button>
+    <button (click)="buttonNextQuestionClick(); image.hidden = false"
+      [disabled]="currentQuestionPosition == questions.length - 1"
+      class="black-button" type="submit">Next
+    </button>
+  </div>
+    <button (click)="buttonEndQuizClick()"
+      class="white-button" type="submit">End quiz
+    </button>
+</div>
+
+<div *ngIf="userIsMakerOfThisQuiz == false && quizStarted" class="quiz-page-content-container" >
+  <div>
+    <div *ngFor="let answer of answers ; index as i; trackBy:trackByFn">
+      <label>{{i+1}}. </label>
+      <textarea [(ngModel)]="answers[i]" 
+      rows="3" cols="40"
+      class="input" placeholder="{{i+1}}. answer" required type="text"
+      ></textarea>
+    </div>
+    <div class="quiz-page-button-container">
+      <button (click)="buttonSubmitAnswersClick()"
+        class="black-button" type="submit">Submit answers
+      </button>
+      <button (click)="buttonEndQuizClick()"
+      class="white-button" type="button">Exit
+    </button>
+    </div>
+  </div>
+  <div class="text-error" *ngIf="answersError">An error ocured, please try again</div>
+</div>
+
+
+<div class="text-error" *ngIf="error">An error ocured, please try again</div>
+<div class="text-error" *ngIf="quizError">Quiz with that code does not exist</div>

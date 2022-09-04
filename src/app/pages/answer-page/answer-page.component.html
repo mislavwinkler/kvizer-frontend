@@ -1,0 +1,29 @@
+<div class="answer-page-content-container" *ngIf="(userIsMakerOfThisQuiz || authenticationService.isUserAdmin()) && quiz != undefined">
+    <h1 class="heading">{{quiz.name}}</h1>
+    <div>
+        <button class="white-button" *ngFor="let user of users" (click)="curUser = user.username; getAnswers()"
+        >{{user.username}}</button>
+      </div>
+      <h3 *ngIf="curUser">Selected: <strong>{{curUser}}</strong></h3>
+
+    <div *ngIf="curUser != undefined && answers != undefined" >
+        <table>
+            <tr>
+            <th>#</th>
+            <th>Question</th>
+            <th>Correct Answer</th>
+            <th>Given Answer</th>
+            </tr>
+            <tr *ngFor="let question of questions ; index as i;">
+                <td>{{question.position}}</td>
+                <td>{{question.question}}</td>
+                <td>{{question.answer}}</td>
+                <td *ngIf="answers[i].answer != null" style="font-weight: bold;"
+                    [ngStyle]="{'color': (question.answer == answers[i].answer) ? 'green' : 'red'}">
+                    {{answers[i].answer}}</td>
+                <td *ngIf="answers[i].answer == null" style="color: red; font-weight: bold;">
+                X</td>
+            </tr>
+        </table>
+    </div>
+</div>

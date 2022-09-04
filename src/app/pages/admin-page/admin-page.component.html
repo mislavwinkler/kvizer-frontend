@@ -1,0 +1,42 @@
+<div class="admin-page-container">
+    <div class="quiz-container" *ngIf="quizes != undefined" >
+        <h1>All quizes</h1>
+        <table class="quiz-table">
+            <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Maker</th>
+            <th>Creation date</th>
+            </tr>
+            <tr *ngFor="let quiz of quizes ;">
+                <td routerLink="/quiz/{{quiz.code}}">{{quiz.code}}</td>
+                <td routerLink="/quiz/{{quiz.code}}">{{quiz.name}}</td>
+                <td routerLink="/quiz/{{quiz.code}}">{{quiz.makerName}}</td>
+                <td routerLink="/quiz/{{quiz.code}}">{{quiz.creationDate}}</td>
+                <td>
+                <button class="small-red-button" title="delete quiz"
+                (click)="deleteQuiz(quiz)">Delete
+                </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="users-container" *ngIf="users != undefined" >
+        <h1>All users</h1>
+        <table class="user-table">
+            <tr>
+            <th>Username</th>
+            </tr>
+            <tr *ngFor="let user of users ;">
+                <td>{{user.username}}</td>
+                <td>
+                    <button class="small-red-button" title="delete user"
+                    (click)="deleteUser(user)">Delete
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="text-error" *ngIf="error">An error ocured, please try again</div>

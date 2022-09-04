@@ -1,18 +1,18 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {LoginPageComponent} from "./login-page/login-page.component";
-import {RegistrationPageComponent} from "./registration-page/registration-page.component";
+import {LoginPageComponent} from "./pages/login-page/login-page.component";
+import {RegistrationPageComponent} from "./pages/registration-page/registration-page.component";
 import {LoggedInGuard} from "./security/logged-in.guard";
-import {HomePageComponent} from "./home-page/home-page.component";
-import {QuizPageComponent} from "./quiz-page/quiz-page.component";
-import { EditQuizPageComponent } from './edit-quiz-page/edit-quiz-page.component';
-import {NewQuizPageComponent} from "./new-quiz-page/new-quiz-page.component";
-import {AccountPageComponent} from "./account-page/account-page.component";
-import {QuestionPageComponent } from './question-page/question-page.component';
-import { AnswerPageComponent } from './answer-page/answer-page.component';
-import { AdminPageComponent } from './admin-page/admin-page.component';
-import {ForbiddenPageComponent} from "./forbidden-page/forbidden-page.component";
-import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
+import {HomePageComponent} from "./pages/home-page/home-page.component";
+import {QuizPageComponent} from "./pages/quiz-page/quiz-page.component";
+import {EditQuizPageComponent} from './pages/edit-quiz-page/edit-quiz-page.component';
+import {NewQuizPageComponent} from "./pages/new-quiz-page/new-quiz-page.component";
+import {AccountPageComponent} from "./pages/account-page/account-page.component";
+import {QuestionPageComponent} from './pages/question-page/question-page.component';
+import {AnswerPageComponent} from './pages/answer-page/answer-page.component';
+import {AdminPageComponent} from './pages/admin-page/admin-page.component';
+import {ForbiddenPageComponent} from "./pages/forbidden-page/forbidden-page.component";
+import {PageNotFoundComponent} from "./pages/page-not-found/page-not-found.component";
 import {AdminAuthorityGuard} from "./security/admin-authority.guard";
 
 const routes: Routes = [

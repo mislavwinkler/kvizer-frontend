@@ -1,0 +1,27 @@
+<div class="login-page-container">
+<h1 class="login-page-logo">Kvizer</h1>
+<form #authenticationForm="ngForm" class="login-page-form" name="authenticationForm">
+  <label>Username:</label><br/>
+  <input [(ngModel)]="login.username" [disabled]="authenticating"
+  autocomplete="username" class="login-page-textinput input" name="username"
+  placeholder="username" required type="username"
+  /><br/>
+  <label>Password:</label><br/>
+  <input [(ngModel)]="login.password" [disabled]="authenticating"
+  autocomplete="current-password" class="login-page-textinput input" name="password"
+  placeholder="password" required type="password"
+  />
+  <div class="login-page-button-container">
+    <button (click)="buttonLoginClick()" [disabled]="authenticating || login.username == '' || login.password == ''"
+                    class="black-button" type="submit">Login
+            </button>
+    <a
+      href="/registration"
+      class="login-page-link"
+    >
+      Do not have an account ? Register here
+    </a>
+  </div>
+  <div class="text-error" *ngIf="authenticationError">There was an error attempting to log in, please check your username and password and try again.</div>
+</form>
+</div>

@@ -1,0 +1,122 @@
+.edit-quiz-page-container {
+  width: 90%;
+  overflow: auto;
+  padding: 2rem;
+}
+
+.question-list {
+    width: 90%;
+    max-width: 100%;
+    border: solid 1px #ccc;
+    min-height: 60px;
+    display: block;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.question-box {
+  padding: 20px 10px;
+  border-bottom: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  font-size: 14px;
+}
+
+.edit-quiz-page-button-container {
+  width: 90%;
+  display: flex;
+  padding: 0.5rem 0;
+  align-items: flex-end;
+  flex-direction: row-reverse;
+}
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.question-box:last-child {
+  border: none;
+}
+
+.question-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.question-custom-placeholder {
+  background: #ccc;
+  border: dotted 3px #999;
+  min-height: 60px;
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.edit-quiz-page-form {
+  padding-bottom: 2rem;
+  display: flex;
+  overflow: auto;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.edit-quiz-page-input-container {
+  margin: 0 1rem;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.edit-quiz-page-question-button-container {
+  padding: 0.5rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+@media(max-width: 991px) {
+  .edit-quiz-page-container {
+    width: 100%;
+    overflow: auto;
+    padding: 0;
+  }
+  .edit-quiz-page-form {
+    padding: 0;
+    display: flex;
+    overflow: auto;
+    align-self: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .question-list {
+    margin: auto;
+    width: 90%;
+  }
+  .edit-quiz-page-input-container {
+    margin: 0 1rem;
+    align-self: center;
+    justify-content: center;
+  }
+  .edit-quiz-page-question-button-container {
+    width: 100%;
+  }
+  .edit-quiz-page-button-container {
+    width: 100%;
+    justify-content: center;
+  }
+  h3 {
+    padding: 0 1rem;
+  }
+}

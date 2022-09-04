@@ -1,0 +1,20 @@
+<div class="new-quiz-page-container">
+  <form class="new-quiz-page-form">
+    <h1 class="new-quiz-page-text">New quiz</h1>
+    <label>Quiz name:</label>
+    <input #name
+      type="text"
+      id="name"
+      placeholder="quiz name"
+      class="new-quiz-page-textinput input"
+      required
+    />
+    <div class="new-quiz-page-button-container">
+      <button (click)="buttonCreateQuizClick(name.value)" [disabled]="procesing"
+                      class="black-button" type="submit">Make quiz
+              </button>
+    </div>
+  <div class="text-error" *ngIf="error">An error ocured, please try again</div>
+  <div class="text-error" *ngIf="inputError">Quiz must have a name</div>
+  </form>
+</div>

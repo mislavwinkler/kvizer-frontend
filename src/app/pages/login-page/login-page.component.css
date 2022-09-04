@@ -1,0 +1,47 @@
+.login-page-container {
+    width: 100%;
+    display: flex;
+    overflow: auto;
+    min-height: 100vh;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.login-page-logo {
+  font-size: 350%;
+}
+.login-page-form {
+  width: 40%;
+  height: auto;
+  position: relative;
+}
+.login-page-textinput {
+  width: 90%;
+}
+.login-page-button-container {
+  width: 100%;
+  display: flex;
+  padding: 0.5rem;
+  align-items: center;
+  flex-direction: column;
+}
+.login-page-link {
+  font-size: 14px;
+  align-self: flex-end;
+  margin-top: 0.5rem;
+}
+@media(max-width: 991px) {
+  .login-page-form {
+    width: 50%;
+  }
+  .login-page-textinput {
+    width: 90%;
+  }
+}
+@media(max-width: 479px) {
+  .login-page-form {
+    width: 80%;
+    margin: 0;
+    padding: 0;
+  }
+}

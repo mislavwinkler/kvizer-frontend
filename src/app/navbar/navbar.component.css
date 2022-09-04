@@ -37,7 +37,7 @@
   height: 60px !important;
 }
 .navbar-fixed .navbartop-btn {
-  line-height: 60px !important;
+  line-height: 20px !important;
 }
 .navbar-logo {
   display: flex;
@@ -77,9 +77,16 @@
   display: flex;
   flex-direction: column;
   margin-left: 1rem;
+  align-self: bottom;
+}
+.top-navbar {
+  height: 40px;
 }
 
 @media (max-width: 991px) {
+  .top-navbar {
+    height: auto;
+  }
   .navbar {
     padding: 0;
  }
@@ -107,7 +114,6 @@
   .navbar-opened:host .top-navbar {
     display: block !important;
     width: 100% !important;
-    height: auto;
     flex: none !important;
     color: #000;
     background: #f3f3f3;
